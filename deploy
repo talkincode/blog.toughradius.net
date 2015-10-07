@@ -1,0 +1,18 @@
+#!/bin/bash
+
+git add .
+git commit -am "commit toughradius blog `date +%Y-%m-%d" "%H:%M:%S`"
+git push  origin master
+
+hexo generate
+rm -rf /tmp/trblog
+mkdir -p /tmp/trblog
+cp -rf publish/* /tmp/trblog
+cp CNAME /tmp/trblog
+#cp -f favicon.ico /tmp/gitbook/gitbook/images
+cd /tmp/trblog
+git init
+git remote add origin git@github.com:talkincode/blog.toughradius.org.git
+git add .
+git commit -am "deploy trblog `date +%Y-%m-%d" "%H:%M:%S`"
+git push -f origin master:gh-pages
