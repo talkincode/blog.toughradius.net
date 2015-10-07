@@ -9,7 +9,7 @@ rm -rf /tmp/trblog
 mkdir -p /tmp/trblog
 cp -rf public/* /tmp/trblog
 cp CNAME /tmp/trblog
-#cp -f favicon.ico /tmp/gitbook/gitbook/images
+cp -f favicon.ico /tmp/trblog
 cd /tmp/trblog
 git init
 git remote add origin git@github.com:talkincode/blog.toughradius.org.git
