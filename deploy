@@ -7,7 +7,7 @@ git push  origin master
 hexo generate
 rm -rf /tmp/trblog
 mkdir -p /tmp/trblog
-cp -rf publish/* /tmp/trblog
+cp -rf public/* /tmp/trblog
 cp CNAME /tmp/trblog
 #cp -f favicon.ico /tmp/gitbook/gitbook/images
 cd /tmp/trblog
