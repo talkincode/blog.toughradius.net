@@ -1,5 +1,9 @@
 #!/bin/bash
 
+git add .
+git commit -am 'push master'
+git push origin master
+
 cp CNAME public
 cp -f favicon.png public
 hexo deploy
