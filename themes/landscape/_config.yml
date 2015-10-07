@@ -2,8 +2,8 @@
 menu:
   Home: /
   Archives: /archives
-  AboutUS: /aboutus
-rss: /atom.xml
+  About: /aboutus
+rss: false
 
 # Content
 excerpt_link: Read More

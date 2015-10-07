@@ -9,7 +9,8 @@ description:
 author: toughradius.org
 language:
 timezone:
-
+duoshuo_shortname: toughradius
+disqus_shortname: toughradius
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://yoursite.com
@@ -72,4 +73,5 @@ deploy:
   repo:git@github.com:talkincode/blog.toughradius.org.git
   branch:gh-pages
   message:deploy blog
+  
   
