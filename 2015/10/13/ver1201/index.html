@@ -3,24 +3,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>服务中小微ISP，让运营变的更简单。 | ToughRADIUS 博客</title>
+  <title>ToughRADIUS V1.2.0.1 发布 | ToughRADIUS 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ToughRADIUS是一个AAA应用软件，从创立之日起，他的宗旨就是服务于中小微ISP，让运营变得更简单。
-ToughRADIUS支持标准RADIUS协议（RFC 2865, RFC 2866），提供完整的AAA实现。支持灵活的策略管理，支持各种主流接入设备并轻松扩展，具备丰富的计费策略支持。 
-ToughRADIUS支持使用Oracle, MySQL, PostgreSQL, MSSQL等主流">
+  <meta name="description" content="ToughRADIUS V1.2.0.1 发布，该本本没有数据库部分升级，在ToughRADIUS的控制面板，选择升级开发版就可以切换了。
+版本变更说明：
+不再发布为Python标准安装包，ToughRADIUS在发布上将主要采用Docker镜像打包模式，这让我们更专注的解决问题，而不是制造各种问题。
+在发送强制下线消息时有一个打印日志的BUG被修复。
+清理了一些无用的逻辑代码。
+用户状态的改进，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="服务中小微ISP，让运营变的更简单。">
-<meta property="og:url" content="http://blog.toughradius.org/2015/10/07/intro/index.html">
+<meta property="og:title" content="ToughRADIUS V1.2.0.1 发布">
+<meta property="og:url" content="http://blog.toughradius.org/2015/10/13/ver1201/index.html">
 <meta property="og:site_name" content="ToughRADIUS 博客">
-<meta property="og:description" content="ToughRADIUS是一个AAA应用软件，从创立之日起，他的宗旨就是服务于中小微ISP，让运营变得更简单。
-ToughRADIUS支持标准RADIUS协议（RFC 2865, RFC 2866），提供完整的AAA实现。支持灵活的策略管理，支持各种主流接入设备并轻松扩展，具备丰富的计费策略支持。 
-ToughRADIUS支持使用Oracle, MySQL, PostgreSQL, MSSQL等主流">
-<meta property="og:updated_time" content="2015-10-07T08:28:38.000Z">
+<meta property="og:description" content="ToughRADIUS V1.2.0.1 发布，该本本没有数据库部分升级，在ToughRADIUS的控制面板，选择升级开发版就可以切换了。
+版本变更说明：
+不再发布为Python标准安装包，ToughRADIUS在发布上将主要采用Docker镜像打包模式，这让我们更专注的解决问题，而不是制造各种问题。
+在发送强制下线消息时有一个打印日志的BUG被修复。
+清理了一些无用的逻辑代码。
+用户状态的改进，">
+<meta property="og:updated_time" content="2015-10-13T06:56:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="服务中小微ISP，让运营变的更简单。">
-<meta name="twitter:description" content="ToughRADIUS是一个AAA应用软件，从创立之日起，他的宗旨就是服务于中小微ISP，让运营变得更简单。
-ToughRADIUS支持标准RADIUS协议（RFC 2865, RFC 2866），提供完整的AAA实现。支持灵活的策略管理，支持各种主流接入设备并轻松扩展，具备丰富的计费策略支持。 
-ToughRADIUS支持使用Oracle, MySQL, PostgreSQL, MSSQL等主流">
+<meta name="twitter:title" content="ToughRADIUS V1.2.0.1 发布">
+<meta name="twitter:description" content="ToughRADIUS V1.2.0.1 发布，该本本没有数据库部分升级，在ToughRADIUS的控制面板，选择升级开发版就可以切换了。
+版本变更说明：
+不再发布为Python标准安装包，ToughRADIUS在发布上将主要采用Docker镜像打包模式，这让我们更专注的解决问题，而不是制造各种问题。
+在发送强制下线消息时有一个打印日志的BUG被修复。
+清理了一些无用的逻辑代码。
+用户状态的改进，">
   
   
     <link rel="icon" href="/favicon.png">
@@ -67,10 +76,10 @@ ToughRADIUS支持使用Oracle, MySQL, PostgreSQL, MSSQL等主流">
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-intro" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-ver1201" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/10/07/intro/" class="article-date">
-  <time datetime="2015-10-07T07:59:45.000Z" itemprop="datePublished">2015-10-07</time>
+    <a href="/2015/10/13/ver1201/" class="article-date">
+  <time datetime="2015-10-13T06:54:34.000Z" itemprop="datePublished">2015-10-13</time>
 </a>
     
   </div>
@@ -81,7 +90,7 @@ ToughRADIUS支持使用Oracle, MySQL, PostgreSQL, MSSQL等主流">
         
   
     <h1 class="article-title" itemprop="name">
-      服务中小微ISP，让运营变的更简单。
+      ToughRADIUS V1.2.0.1 发布
     </h1>
   
 
@@ -89,33 +98,40 @@ ToughRADIUS支持使用Oracle, MySQL, PostgreSQL, MSSQL等主流">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>ToughRADIUS是一个AAA应用软件，从创立之日起，他的宗旨就是服务于中小微ISP，让运营变得更简单。</p>
-<p>ToughRADIUS支持标准RADIUS协议（RFC 2865, RFC 2866），提供完整的AAA实现。支持灵活的策略管理，支持各种主流接入设备并轻松扩展，具备丰富的计费策略支持。 </p>
-<p>ToughRADIUS支持使用Oracle, MySQL, PostgreSQL, MSSQL等主流数据库存储用户数据，支持数据缓存，提供高性能的支持。 </p>
+        <p>ToughRADIUS V1.2.0.1 发布，该本本没有数据库部分升级，在ToughRADIUS的控制面板，选择升级开发版就可以切换了。</p>
+<h2 id="版本变更说明：">版本变更说明：</h2><ul>
+<li>不再发布为Python标准安装包，ToughRADIUS在发布上将主要采用Docker镜像打包模式，这让我们更专注的解决问题，而不是制造各种问题。</li>
+<li>在发送强制下线消息时有一个打印日志的BUG被修复。</li>
+<li>清理了一些无用的逻辑代码。</li>
+<li>用户状态的改进，查询时根据用户过期日期查询，在显示时做额外的判断，修正了用户已过期还显示为正常的错误。</li>
+<li>充值卡续费的BUG修复。</li>
+<li>发送邮件模块的BUG修复。</li>
+<li>操作员cookie过期导致退出链接出错的BUG修复。</li>
+<li>更新Dockerfile构建脚本。</li>
+</ul>
+<p>感谢大家一如既往的支持，有问题请及时反馈。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.toughradius.org/2015/10/07/intro/" data-id="cifp0nkg60000dcqjofw94td3" class="article-share-link">Share</a>
+      <a data-url="http://blog.toughradius.org/2015/10/13/ver1201/" data-id="cifp0nkhr0002dcqjixm3die1" class="article-share-link">Share</a>
       
-        <a href="http://blog.toughradius.org/2015/10/07/intro/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://blog.toughradius.org/2015/10/13/ver1201/#disqus_thread" class="article-comment-link">Comments</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/release/">release</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2015/10/13/ver1201/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          ToughRADIUS V1.2.0.1 发布
-        
-      </div>
-    </a>
   
+    <a href="/2015/10/07/intro/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">服务中小微ISP，让运营变的更简单。</div>
+    </a>
   
 </nav>
 
@@ -206,7 +222,7 @@ ToughRADIUS支持使用Oracle, MySQL, PostgreSQL, MSSQL等主流">
 <script>
   var disqus_shortname = 'toughradius';
   
-  var disqus_url = 'http://blog.toughradius.org/2015/10/07/intro/';
+  var disqus_url = 'http://blog.toughradius.org/2015/10/13/ver1201/';
   
   (function(){
     var dsq = document.createElement('script');
