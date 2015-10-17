@@ -3,45 +3,42 @@
 <head>
   <meta charset="utf-8">
   
-  <title>关于我们 | ToughRADIUS 博客</title>
+  <title>ToughRADIUS V1.2.0.2 发布 | ToughRADIUS 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于 toughstructtoughstruct是ToughRADIUS开发团队的代号，是我们对产品的理念。服务中小微ISP，让运营变的更简单，是我们的核心目标。
-公司网站http://www.toughstruct.com
-产品演示ToughRADIUS
-主要端口
+  <meta name="description" content="ToughRADIUS V1.2.0.2 发布。
+版本变更说明：
+修复了系统创建后，用户密码认证失效，全部放行的bug。
+修复了无法使用mschapv2认证的错误，支持mppe128位加密。
+删除了mschapv1的支持。
 
-认证端口：1812计费端口：1813管理端口：1815
-
-运营管理界面
-
-链接地址：http://radius.toughstr">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于我们">
-<meta property="og:url" content="http://blog.toughradius.org/aboutus/index.html">
+升级指南可在系统控制管理界面里直接升级稳定版，无数据库结构变动，但建议还是要备份数据。
+如果界面升级失败，可在主机终端用以下指令升级：
+docker exec trserve">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ToughRADIUS V1.2.0.2 发布">
+<meta property="og:url" content="http://blog.toughradius.org/2015/10/17/ver1202/index.html">
 <meta property="og:site_name" content="ToughRADIUS 博客">
-<meta property="og:description" content="关于 toughstructtoughstruct是ToughRADIUS开发团队的代号，是我们对产品的理念。服务中小微ISP，让运营变的更简单，是我们的核心目标。
-公司网站http://www.toughstruct.com
-产品演示ToughRADIUS
-主要端口
+<meta property="og:description" content="ToughRADIUS V1.2.0.2 发布。
+版本变更说明：
+修复了系统创建后，用户密码认证失效，全部放行的bug。
+修复了无法使用mschapv2认证的错误，支持mppe128位加密。
+删除了mschapv1的支持。
 
-认证端口：1812计费端口：1813管理端口：1815
-
-运营管理界面
-
-链接地址：http://radius.toughstr">
-<meta property="og:updated_time" content="2015-10-13T07:09:07.000Z">
+升级指南可在系统控制管理界面里直接升级稳定版，无数据库结构变动，但建议还是要备份数据。
+如果界面升级失败，可在主机终端用以下指令升级：
+docker exec trserve">
+<meta property="og:updated_time" content="2015-10-17T07:28:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于我们">
-<meta name="twitter:description" content="关于 toughstructtoughstruct是ToughRADIUS开发团队的代号，是我们对产品的理念。服务中小微ISP，让运营变的更简单，是我们的核心目标。
-公司网站http://www.toughstruct.com
-产品演示ToughRADIUS
-主要端口
+<meta name="twitter:title" content="ToughRADIUS V1.2.0.2 发布">
+<meta name="twitter:description" content="ToughRADIUS V1.2.0.2 发布。
+版本变更说明：
+修复了系统创建后，用户密码认证失效，全部放行的bug。
+修复了无法使用mschapv2认证的错误，支持mppe128位加密。
+删除了mschapv1的支持。
 
-认证端口：1812计费端口：1813管理端口：1815
-
-运营管理界面
-
-链接地址：http://radius.toughstr">
+升级指南可在系统控制管理界面里直接升级稳定版，无数据库结构变动，但建议还是要备份数据。
+如果界面升级失败，可在主机终端用以下指令升级：
+docker exec trserve">
   
   
     <link rel="icon" href="/favicon.png">
@@ -88,10 +85,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-ver1202" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/aboutus/index.html" class="article-date">
-  <time datetime="2015-10-07T09:35:03.000Z" itemprop="datePublished">2015-10-07</time>
+    <a href="/2015/10/17/ver1202/" class="article-date">
+  <time datetime="2015-10-17T07:22:51.000Z" itemprop="datePublished">2015-10-17</time>
 </a>
     
   </div>
@@ -102,7 +99,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      关于我们
+      ToughRADIUS V1.2.0.2 发布
     </h1>
   
 
@@ -110,37 +107,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="关于_toughstruct">关于 toughstruct</h2><p>toughstruct是ToughRADIUS开发团队的代号，是我们对产品的理念。服务中小微ISP，让运营变的更简单，是我们的核心目标。</p>
-<h2 id="公司网站">公司网站</h2><p><a href="http://www.toughstruct.com" target="_blank" rel="external">http://www.toughstruct.com</a></p>
-<h2 id="产品演示">产品演示</h2><h3 id="ToughRADIUS">ToughRADIUS</h3><ul>
-<li>主要端口</li>
+        <p>ToughRADIUS V1.2.0.2 发布。</p>
+<h2 id="版本变更说明：">版本变更说明：</h2><ul>
+<li>修复了系统创建后，用户密码认证失效，全部放行的bug。</li>
+<li>修复了无法使用mschapv2认证的错误，支持mppe128位加密。</li>
+<li>删除了mschapv1的支持。</li>
 </ul>
-<p>认证端口：1812<br>计费端口：1813<br>管理端口：1815</p>
-<ul>
-<li>运营管理界面</li>
-</ul>
-<p>链接地址：<a href="http://radius.toughstruct.net:1916/" target="_blank" rel="external">http://radius.toughstruct.net:1916/</a><br>用户密码: admin/root</p>
-<ul>
-<li>自助服务界面</li>
-</ul>
-<p>链接地址：<a href="http://radius.toughstruct.net:1917/" target="_blank" rel="external">http://radius.toughstruct.net:1917/</a> </p>
-<ul>
-<li>系统管理界面</li>
-</ul>
-<p>链接地址：<a href="http://radius.toughstruct.net:1919" target="_blank" rel="external">http://radius.toughstruct.net:1919</a></p>
+<h2 id="升级指南">升级指南</h2><p>可在系统控制管理界面里直接升级稳定版，无数据库结构变动，但建议还是要备份数据。</p>
+<p>如果界面升级失败，可在主机终端用以下指令升级：</p>
+<pre><code>docker <span class="built_in">exec</span> trserver sh -c <span class="string">"cd /opt/toughradius &amp;&amp; git checkout stable &amp;&amp; git pull origin stable &amp;&amp; supervisorctl restart all"</span>
+</code></pre><blockquote>
+<p>注意 trserver是容器的名称，请该做你部署的容器名称。</p>
+</blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.toughradius.org/aboutus/index.html" data-id="cifurizt400015zqj8v3m7z6o" class="article-share-link">Share</a>
+      <a data-url="http://blog.toughradius.org/2015/10/17/ver1202/" data-id="cifurizt900025zqj5cn9322v" class="article-share-link">Share</a>
       
-        <a href="http://blog.toughradius.org/aboutus/index.html#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://blog.toughradius.org/2015/10/17/ver1202/#disqus_thread" class="article-comment-link">Comments</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/release/">release</a></li></ul>
+
     </footer>
   </div>
   
     
+<nav id="article-nav">
+  
+  
+    <a href="/2015/10/17/mschapv2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">mschapv2在Radius中的认证实现</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
@@ -236,7 +239,7 @@
 <script>
   var disqus_shortname = 'toughradius';
   
-  var disqus_url = 'http://blog.toughradius.org/aboutus/index.html';
+  var disqus_url = 'http://blog.toughradius.org/2015/10/17/ver1202/';
   
   (function(){
     var dsq = document.createElement('script');
