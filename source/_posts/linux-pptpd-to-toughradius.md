@@ -1,6 +1,6 @@
 title: Linux PPTP 对接 ToughRADIUS
 date: 2015-10-19 10:25:32
-tags: pptpd, vpn
+tags: [pptpd, vpn]
 ---
 
 以 ubuntu14 为例，谈谈PPTP对接ToughRADIUS
