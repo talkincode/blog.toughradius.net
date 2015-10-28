@@ -77,8 +77,8 @@ deploy:
   
 plugins:
 - hexo-generator-cname
-hexo-generator-feed
-hexo-generator-sitemap
+- hexo-generator-feed
+- hexo-generator-sitemap
 
 feed:
   type: atom
