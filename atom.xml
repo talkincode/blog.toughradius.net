@@ -4,7 +4,7 @@
   <subtitle><![CDATA[服务中小微ISP，让运营变的更简单]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.toughradius.org/"/>
-  <updated>2015-10-31T11:30:07.000Z</updated>
+  <updated>2015-10-31T11:31:31.000Z</updated>
   <id>http://blog.toughradius.org/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://blog.toughradius.org/2015/10/21/docker-mysql-create/"/>
     <id>http://blog.toughradius.org/2015/10/21/docker-mysql-create/</id>
     <published>2015-10-21T15:47:26.000Z</published>
-    <updated>2015-10-31T11:30:07.000Z</updated>
+    <updated>2015-10-31T11:31:31.000Z</updated>
     <content type="html"><![CDATA[<p>ToughRADIUS默认采用了SQLite存储数据，通常这足够运营上千的用户量了，不过当系统对数据的可管理性，系统的性能有更高的要求时，我们建议采用MySQL数据库来替换。</p>
 <p>最近不少朋友反应数据库出现锁死的状况，主要是由于并发过高，SQLite采用的文件锁导致了其他数据库事务失败。</p>
 <p>在ToughRADIUS发布的Docker镜像中，已经内置了MySQL的驱动，因此我们要做的仅仅是对数据库的配置。</p>
@@ -57,7 +57,7 @@
 <span class="operator"><span class="keyword">FLUSH</span> <span class="keyword">PRIVILEGES</span>;</span> 
 </code></pre><h3 id="配置ToughRADIUS">配置ToughRADIUS</h3><p>进入ToughRADIUS的系统管理控制台，打开数据库配置界面。设置MySQl数据库类型，并填写mysql数据库连接描述。注意数据库名称，用户名，密码对应。</p>
 <pre><code><span class="label">mysql:</span>//tradmin:trradiusd<span class="localvars">@192</span><span class="number">.168</span><span class="number">.1</span><span class="number">.10</span>/toughradius?charset=utf8
-</code></pre><p><img src="https://cloud.githubusercontent.com/assets/377938/10863358/b4e30a14-8005-11e5-8e06-b4ff066842d1.png" alt="image"></p>
+</code></pre><p><img src="https://cloud.githubusercontent.com/assets/377938/10863358/b4e30a14-8005-11e5-8e06-b4ff066842d1.png" alt="mysql config"></p>
 <h3 id="初始化MySQL数据库">初始化MySQL数据库</h3><p>完成创建和配置后，进入下一步的初始化过程，首先进入控制面板，重启所有服务，以保证所有服务都能加载最新配置。</p>
 <p>点击初始化数据库按钮，完成数据库的初始化。</p>
 <h3 id="恢复数据">恢复数据</h3><p>进入数据备份管理界面，恢复之前备份的数据，如果是首次安装则可忽略。</p>
