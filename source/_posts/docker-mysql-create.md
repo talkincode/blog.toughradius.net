@@ -67,7 +67,7 @@ ToughRADIUS默认采用了SQLite存储数据，通常这足够运营上千的用
 
 	mysql://tradmin:trradiusd@192.168.1.10/toughradius?charset=utf8
 
-![image](https://cloud.githubusercontent.com/assets/377938/10863358/b4e30a14-8005-11e5-8e06-b4ff066842d1.png)
+![mysql config](https://cloud.githubusercontent.com/assets/377938/10863358/b4e30a14-8005-11e5-8e06-b4ff066842d1.png)
 
 
 ### 初始化MySQL数据库
