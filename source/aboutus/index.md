@@ -16,22 +16,19 @@ http://www.toughstruct.com
 
 - 主要端口
 
-认证端口：1912
-计费端口：1913
-管理端口：1915
+认证端口：1812
+计费端口：1813
+管理端口：1816
 
 - 运营管理界面
 
-链接地址：http://radius.toughstruct.net:1916/ 
+链接地址：http://radius.toughstruct.net:1816/ 
 用户密码: admin/root
 
 - 自助服务界面
 
-链接地址：http://radius.toughstruct.net:1917/ 
+链接地址：http://radius.toughstruct.net:1816/customer
 
-- 系统管理界面
-
-链接地址：http://radius.toughstruct.net:1919
 
 
 
