@@ -4,7 +4,7 @@
   <subtitle><![CDATA[服务中小微ISP，让运营变的更简单]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.toughradius.org/"/>
-  <updated>2015-10-31T11:31:31.000Z</updated>
+  <updated>2016-02-03T18:41:45.000Z</updated>
   <id>http://blog.toughradius.org/</id>
   
   <author>
@@ -13,6 +13,167 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[ToughMySQL，为ToughRADIUS提供数据库双机热备支持]]></title>
+    <link href="http://blog.toughradius.org/2016/02/04/toughmysql-v0-0-1/"/>
+    <id>http://blog.toughradius.org/2016/02/04/toughmysql-v0-0-1/</id>
+    <published>2016-02-03T18:39:38.000Z</published>
+    <updated>2016-02-03T18:41:45.000Z</updated>
+    <content type="html"><![CDATA[<p>ToughMySQL是一个基于Docker技术的MySQL应用，一开始它就是为了ToughRADIUS提供一个简单可靠易用的数据库服务。</p>
+<p>现在 ToughMySQL发布了第一个正式的版本 v0.0.1</p>
+<h2 id="功能特性：">功能特性：</h2><ul>
+<li>实现MySQL Docker容器部署。</li>
+<li>提供针对不同服务器配置环境的优化配置。</li>
+<li>提供一键脚本快速安装。</li>
+<li>提供备份脚本，支持7天以上备份自动删除。</li>
+<li>提供主从，互为主备的快速配置。</li>
+</ul>
+<h2 id="快速指南">快速指南</h2><p>tmshell是一个自动化安装和管理脚本，通过这个脚本，提供了很多有用的管理功能</p>
+<pre><code><span class="variable">$ </span>wget <span class="symbol">https:</span>/<span class="regexp">/github.com/talkincode</span><span class="regexp">/toughmysql/raw</span><span class="regexp">/master/tmshell</span> -<span class="constant">O</span> /usr/local/bin/tmshell
+<span class="variable">$ </span>chmod +x /usr/local/bin/tmshell
+<span class="variable">$ </span>tmshell install
+</code></pre><p>直接输入 tmshell 可以看到支持的指令操作</p>
+<pre><code>usage: tmshell <span class="keyword">[</span>OPTIONS]<span class="instruction"> instance
+</span>
+    docker_setup                install docker, docker-compose
+    pull                        mysql docker images pull
+    install                     install default mysql<span class="instruction"> instance
+</span>    remove                      uninstall mysql<span class="instruction"> instance
+</span>    config                      mysql<span class="instruction"> instance </span>config edit
+    status                      mysql<span class="instruction"> instance </span>status
+    restart                     mysql<span class="instruction"> instance </span>restart
+    stop                        mysql<span class="instruction"> instance </span>stop
+    logs                        mysql<span class="instruction"> instance </span>logs
+    showmaster                  mysql<span class="instruction"> instance </span>show master status
+    showslave                   mysql<span class="instruction"> instance </span>show slave status
+    upmaster                    mysql<span class="instruction"> instance </span>update master sync config
+    backup                      mysql<span class="instruction"> instance </span>backup database
+    dsh                         mysql<span class="instruction"> instance </span>bash term
+
+All other options are passed to the tmshell program.
+</code></pre><h3 id="完整的安装过程">完整的安装过程</h3><p>安装过程是一个交互式的过程，根据实际情况修改具体参数，注意如果打算以热备模式部署，需要输入server id</p>
+<pre><code>[root@i-jahnm3dt ~]# tmshell <span class="operator"><span class="keyword">install</span>
+mysql <span class="keyword">user</span> [raduser]:
+mysql <span class="keyword">user</span> <span class="keyword">password</span> [radpwd]:
+mysql <span class="keyword">database</span> [radiusd]:
+mysql root <span class="keyword">password</span> [<span class="keyword">none</span>]:
+mysql <span class="keyword">replication</span> <span class="keyword">password</span> [<span class="keyword">replication</span>]:
+mysql port [<span class="number">3306</span>]:
+mysql <span class="keyword">server</span> <span class="keyword">id</span> [<span class="number">1</span>,<span class="number">2.</span>..](<span class="keyword">default</span> <span class="keyword">none</span>): <span class="number">1</span>
+mysql <span class="keyword">max</span> memary [<span class="number">512</span><span class="keyword">M</span>,<span class="number">1</span><span class="keyword">G</span>,<span class="number">4</span><span class="keyword">G</span>](<span class="keyword">default</span> <span class="keyword">none</span>):
+
+ToughMySQL <span class="keyword">instance</span> config:
+
+<span class="keyword">instance</span> <span class="keyword">name</span>: mysql
+mysql_user: raduser
+mysql_password: radpwd
+mysql_database: radiusd
+mysql_root_password:
+mysql_repl_password: <span class="keyword">replication</span>
+mysql_port: <span class="number">3306</span>
+serverid: <span class="number">1</span>
+mysql_max_mem:
+
+
+<span class="keyword">database</span>:
+    container_name: db_mysql
+    image: <span class="string">"index.alauda.cn/toughstruct/mysql"</span>
+    privileged: <span class="literal">true</span>
+    ports:
+        -<span class="string">"3306:3306"</span>
+    ulimits:
+        nproc: <span class="number">65535</span>
+        nofile:
+            soft: <span class="number">20000</span>
+            hard: <span class="number">40000</span>
+        environment:
+            - SERVERID=<span class="number">1</span>
+            - MYSQL_MAX_MEM=
+            - MYSQL_USER=raduser
+            - MYSQL_PASSWORD=radpwd
+            - MYSQL_DATABASE=radiusd
+            - MYSQL_ROOT_PASSWORD=
+            - MYSQL_REPL_PASSWORD=<span class="keyword">replication</span>
+    restart: <span class="keyword">always</span>
+    volumes:
+        /home/toughrun/mysql/dbmysql:/<span class="keyword">var</span>/lib/mysql
+        /home/toughrun/mysql/<span class="keyword">backup</span>:/<span class="keyword">var</span>/<span class="keyword">backup</span>
+
+Creating db_mysql
+  <span class="keyword">Name</span>          Command         State           Ports
+<span class="comment">----------------------------------------------------------</span>
+db_mysql   /usr/<span class="keyword">local</span>/<span class="keyword">bin</span>/run   Up      <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">3306</span>-&gt;<span class="number">3306</span>/tcp</span>
+</code></pre><p>在另一台服务器上按同样的步骤部署mysql实例，注意server id必须不一样</p>
+<blockquote>
+<p>具体过程略</p>
+</blockquote>
+<p>查看每一个实例的 master status </p>
+<p>服务器1：</p>
+<pre><code>[root<span class="comment">@i-jahnm3dt ~]# tmshell showmaster</span>
+<span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span> 1. row <span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span>
+File: mysql-bin.000002
+Position: 107
+Binlog_Do_DB:
+Binlog_Ignore_DB: test,mysql
+hosts:
+172.17.0.1
+10.61.105.29
+</code></pre><p>服务器2：</p>
+<pre><code>[root<span class="comment">@i-jahnm3et ~]# tmshell showmaster</span>
+<span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span> 1. row <span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span>
+File: mysql-bin.000002
+Position: 107
+Binlog_Do_DB:
+Binlog_Ignore_DB: test,mysql
+hosts:
+172.17.0.1
+10.60.128.105
+</code></pre><p>在服务器1上执行：</p>
+<pre><code>[root@i-jahnm3dt ~]<span class="preprocessor"># tmshell upmaster</span>
+MASTER_HOST: <span class="number">10.60</span><span class="number">.128</span><span class="number">.105</span>
+MASTER_PORT (<span class="number">3306</span>): 
+MASTER_REPL_PASSWORD (replication):
+MASTER_LOG_FILE: mysql-bin<span class="number">.000002</span>
+MASTER_LOG_POS: <span class="number">107</span>
+</code></pre><p>在服务器2上执行：</p>
+<pre><code>[root@i-jahnm3et ~]<span class="preprocessor"># tmshell upmaster</span>
+MASTER_HOST: <span class="number">10.61</span><span class="number">.105</span><span class="number">.29</span>
+MASTER_PORT (<span class="number">3306</span>): 
+MASTER_REPL_PASSWORD (replication):
+MASTER_LOG_FILE: mysql-bin<span class="number">.000002</span>
+MASTER_LOG_POS: <span class="number">107</span>
+</code></pre><p>最后检查每个服务器上的slave状态：</p>
+<pre><code>root<span class="comment">@i-jahnm3dt ~]# tmshell showslave</span>
+<span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span> 1. row <span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span>
+  Slave_IO_State: Waiting for master to send event
+  Master_Host: 10.60.128.105
+  Master_User: repl
+  Master_Port: 3306
+  Connect_Retry: 60
+  Master_Log_File: mysql-bin.000002
+  Read_Master_Log_Pos: 107
+  Relay_Log_File: mysqld-relay-bin.000002
+  Relay_Log_Pos: 253
+  Relay_Master_Log_File: mysql-bin.000002
+  Slave_IO_Running: Yes
+  Slave_SQL_Running: Yes
+</code></pre><p>如果以下两项显示为：</p>
+<pre><code><span class="attribute">Slave_IO_Running</span>: <span class="string">Yes</span>
+<span class="attribute">Slave_SQL_Running</span>: <span class="string">Yes</span>
+</code></pre><p>说明我们的mysql互为主备的配置成功了。现在我们的两个MySQL节点都可以提供服务了，并且实时热备。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>ToughMySQL是一个基于Docker技术的MySQL应用，一开始它就是为了ToughRADIUS提供一个简单可靠易用的数据库服务。</p>
+<p>现在 ToughMySQL发布了第一个正式的版本 v0.0.1</p>
+<h2 id="功能特性：">功能特性：</h2>]]>
+    </summary>
+    
+      <category term="docker" scheme="http://blog.toughradius.org/tags/docker/"/>
+    
+      <category term="mysql" scheme="http://blog.toughradius.org/tags/mysql/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[通过Docker镜像为ToughRADIUS部署Mysql]]></title>
