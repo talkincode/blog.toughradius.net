@@ -5,23 +5,26 @@
   
   <title>通过Docker镜像为ToughRADIUS部署Mysql | ToughRADIUS 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ToughRADIUS默认采用了SQLite存储数据，通常这足够运营上千的用户量了，不过当系统对数据的可管理性，系统的性能有更高的要求时，我们建议采用MySQL数据库来替换。
+  <meta name="description" content="注意：本文提到的方法已经不适用于最新的版本，请参考最新的ToughMySQL实现：
+ToughRADIUS默认采用了SQLite存储数据，通常这足够运营上千的用户量了，不过当系统对数据的可管理性，系统的性能有更高的要求时，我们建议采用MySQL数据库来替换。
 最近不少朋友反应数据库出现锁死的状况，主要是由于并发过高，SQLite采用的文件锁导致了其他数据库事务失败。
-在ToughRADIUS发布的Docker镜像中，已经内置了MySQL的驱动，因此我们要做的仅仅是对数据库的配置。">
+在ToughRADIUS发布的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过Docker镜像为ToughRADIUS部署Mysql">
 <meta property="og:url" content="http://blog.toughradius.org/2015/10/21/docker-mysql-create/index.html">
 <meta property="og:site_name" content="ToughRADIUS 博客">
-<meta property="og:description" content="ToughRADIUS默认采用了SQLite存储数据，通常这足够运营上千的用户量了，不过当系统对数据的可管理性，系统的性能有更高的要求时，我们建议采用MySQL数据库来替换。
+<meta property="og:description" content="注意：本文提到的方法已经不适用于最新的版本，请参考最新的ToughMySQL实现：
+ToughRADIUS默认采用了SQLite存储数据，通常这足够运营上千的用户量了，不过当系统对数据的可管理性，系统的性能有更高的要求时，我们建议采用MySQL数据库来替换。
 最近不少朋友反应数据库出现锁死的状况，主要是由于并发过高，SQLite采用的文件锁导致了其他数据库事务失败。
-在ToughRADIUS发布的Docker镜像中，已经内置了MySQL的驱动，因此我们要做的仅仅是对数据库的配置。">
+在ToughRADIUS发布的">
 <meta property="og:image" content="https://cloud.githubusercontent.com/assets/377938/10863358/b4e30a14-8005-11e5-8e06-b4ff066842d1.png">
-<meta property="og:updated_time" content="2015-10-31T11:31:31.000Z">
+<meta property="og:updated_time" content="2016-02-03T19:05:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过Docker镜像为ToughRADIUS部署Mysql">
-<meta name="twitter:description" content="ToughRADIUS默认采用了SQLite存储数据，通常这足够运营上千的用户量了，不过当系统对数据的可管理性，系统的性能有更高的要求时，我们建议采用MySQL数据库来替换。
+<meta name="twitter:description" content="注意：本文提到的方法已经不适用于最新的版本，请参考最新的ToughMySQL实现：
+ToughRADIUS默认采用了SQLite存储数据，通常这足够运营上千的用户量了，不过当系统对数据的可管理性，系统的性能有更高的要求时，我们建议采用MySQL数据库来替换。
 最近不少朋友反应数据库出现锁死的状况，主要是由于并发过高，SQLite采用的文件锁导致了其他数据库事务失败。
-在ToughRADIUS发布的Docker镜像中，已经内置了MySQL的驱动，因此我们要做的仅仅是对数据库的配置。">
+在ToughRADIUS发布的">
   
   
     <link rel="icon" href="/favicon.png">
@@ -90,7 +93,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>ToughRADIUS默认采用了SQLite存储数据，通常这足够运营上千的用户量了，不过当系统对数据的可管理性，系统的性能有更高的要求时，我们建议采用MySQL数据库来替换。</p>
+        <p>注意：本文提到的方法已经不适用于最新的版本，请参考最新的<a href="http://blog.toughradius.org/2016/02/04/toughmysql-v0-0-1/">ToughMySQL实现：</a></p>
+<p>ToughRADIUS默认采用了SQLite存储数据，通常这足够运营上千的用户量了，不过当系统对数据的可管理性，系统的性能有更高的要求时，我们建议采用MySQL数据库来替换。</p>
 <p>最近不少朋友反应数据库出现锁死的状况，主要是由于并发过高，SQLite采用的文件锁导致了其他数据库事务失败。</p>
 <p>在ToughRADIUS发布的Docker镜像中，已经内置了MySQL的驱动，因此我们要做的仅仅是对数据库的配置。</p>
 <p>强烈推荐使用Docker镜像来部署Mysql，更加简单方便。</p>
@@ -135,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.toughradius.org/2015/10/21/docker-mysql-create/" data-id="cik76l5da0000aoqjgpztx1ua" class="article-share-link">Share</a>
+      <a data-url="http://blog.toughradius.org/2015/10/21/docker-mysql-create/" data-id="cik77ijc50000luqjq0e1nlq1" class="article-share-link">Share</a>
       
         <a href="http://blog.toughradius.org/2015/10/21/docker-mysql-create/#disqus_thread" class="article-comment-link">Comments</a>
       
