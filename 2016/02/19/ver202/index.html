@@ -3,21 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>mschapv2在Radius中的认证实现 | ToughRADIUS 博客</title>
+  <title>ToughRADIUS V2.0.2 发布 | ToughRADIUS 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在Radius的认证请求AccessRequest包中如果包含 MS-CHAP2-Response 和 MS-CHAP-Challenge 属性则意味着需要实现ms-chap-v2认证。
-客户端 MS-CHAP2-Response 和 MS-CHAP-Challenge 生成的规则MS-CHAP-ChallengeMS-CHAP-Challenge  (AuthChallenge) 是客户端生成的">
+  <meta name="description" content="ToughRADIUS V2.0.2 发布。
+ToughRADIUS V2.x版本并不是 V1.x版本的简单延续，而是一次完全重构，一次打破兼容性的重构。
+在保留核心功能的基础上，砍掉了大部分可有可无的功能，比如砍掉自助服务模块是一个非常大的动作。
+在技术框架上进行了完全的重写，并采用pypy这个更快的基础支撑平台，对V1.x版本进行了大刀阔斧的改造，对安装配置操作进行了精简和优化。
+相关文档请参">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mschapv2在Radius中的认证实现">
-<meta property="og:url" content="http://blog.toughradius.org/2015/10/17/mschapv2/index.html">
+<meta property="og:title" content="ToughRADIUS V2.0.2 发布">
+<meta property="og:url" content="http://blog.toughradius.org/2016/02/19/ver202/index.html">
 <meta property="og:site_name" content="ToughRADIUS 博客">
-<meta property="og:description" content="在Radius的认证请求AccessRequest包中如果包含 MS-CHAP2-Response 和 MS-CHAP-Challenge 属性则意味着需要实现ms-chap-v2认证。
-客户端 MS-CHAP2-Response 和 MS-CHAP-Challenge 生成的规则MS-CHAP-ChallengeMS-CHAP-Challenge  (AuthChallenge) 是客户端生成的">
-<meta property="og:updated_time" content="2015-10-16T16:46:34.000Z">
+<meta property="og:description" content="ToughRADIUS V2.0.2 发布。
+ToughRADIUS V2.x版本并不是 V1.x版本的简单延续，而是一次完全重构，一次打破兼容性的重构。
+在保留核心功能的基础上，砍掉了大部分可有可无的功能，比如砍掉自助服务模块是一个非常大的动作。
+在技术框架上进行了完全的重写，并采用pypy这个更快的基础支撑平台，对V1.x版本进行了大刀阔斧的改造，对安装配置操作进行了精简和优化。
+相关文档请参">
+<meta property="og:updated_time" content="2016-02-19T06:56:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mschapv2在Radius中的认证实现">
-<meta name="twitter:description" content="在Radius的认证请求AccessRequest包中如果包含 MS-CHAP2-Response 和 MS-CHAP-Challenge 属性则意味着需要实现ms-chap-v2认证。
-客户端 MS-CHAP2-Response 和 MS-CHAP-Challenge 生成的规则MS-CHAP-ChallengeMS-CHAP-Challenge  (AuthChallenge) 是客户端生成的">
+<meta name="twitter:title" content="ToughRADIUS V2.0.2 发布">
+<meta name="twitter:description" content="ToughRADIUS V2.0.2 发布。
+ToughRADIUS V2.x版本并不是 V1.x版本的简单延续，而是一次完全重构，一次打破兼容性的重构。
+在保留核心功能的基础上，砍掉了大部分可有可无的功能，比如砍掉自助服务模块是一个非常大的动作。
+在技术框架上进行了完全的重写，并采用pypy这个更快的基础支撑平台，对V1.x版本进行了大刀阔斧的改造，对安装配置操作进行了精简和优化。
+相关文档请参">
   
   
     <link rel="icon" href="/favicon.png">
@@ -64,10 +73,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-mschapv2" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-ver202" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/10/17/mschapv2/" class="article-date">
-  <time datetime="2015-10-16T16:44:31.000Z" itemprop="datePublished">2015-10-17</time>
+    <a href="/2016/02/19/ver202/" class="article-date">
+  <time datetime="2016-02-19T06:53:32.000Z" itemprop="datePublished">2016-02-19</time>
 </a>
     
   </div>
@@ -78,7 +87,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      mschapv2在Radius中的认证实现
+      ToughRADIUS V2.0.2 发布
     </h1>
   
 
@@ -86,43 +95,42 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在Radius的认证请求AccessRequest包中如果包含 MS-CHAP2-Response 和 MS-CHAP-Challenge 属性则意味着需要实现ms-chap-v2认证。</p>
-<h2 id="客户端_MS-CHAP2-Response_和_MS-CHAP-Challenge_生成的规则">客户端 MS-CHAP2-Response 和 MS-CHAP-Challenge 生成的规则</h2><h3 id="MS-CHAP-Challenge">MS-CHAP-Challenge</h3><p>MS-CHAP-Challenge  (AuthChallenge) 是客户端生成的随机16字节。</p>
-<h3 id="MS-CHAP2-Response">MS-CHAP2-Response</h3><p>随机生成16字节属性 PeerChallenge，连同AuthChallenge，UserName，Password作为输入参数，调用方法 GenerateNTResponse 得到 NtResponse.</p>
-<pre><code><span class="function"><span class="title">GenerateNTResponse</span><span class="params">(AuthChallenge, PeerChallenge, UserName, Password)</span></span> 
-</code></pre><p>GenerateNTResponse 方法的实现参考 <a href="http://tools.ietf.org/html/rfc2759.html#section-8.1" target="_blank" rel="external">http://tools.ietf.org/html/rfc2759.html#section-8.1</a></p>
-<p>封装50字节的 MS-CHAP2-Response 属性：</p>
-<pre><code><span class="special">[</span>0 : 2<span class="special">]</span>           Flags  <span class="command">\x</span>00<span class="command">\x</span>00
-<span class="special">[</span>2 : 18<span class="special">]</span>          PeerChallenge 
-<span class="special">[</span>18 : 26<span class="special">]</span>         Reserved <span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00
-<span class="special">[</span>26 : 50<span class="special">]</span>         NtResponse
-</code></pre><h2 id="服务端认证规则">服务端认证规则</h2><p>校验 MS-CHAP2-Response 长度，长度不等于50应该丢弃，并发送拒绝认证。</p>
-<p>从 MS-CHAP2-Response 提取 PeerChallenge，NtResponse</p>
-<pre><code>NtResponse = MS-CHAP2-Response[<span class="number">26</span> : <span class="number">50</span>]
-PeerChallenge = MS-CHAP2-Response[<span class="number">2</span> : <span class="number">18</span>]
-</code></pre><p>调用 GenerateNTResponse 方法得到 MyNtResponse</p>
-<pre><code><span class="function"><span class="title">GenerateNTResponse</span><span class="params">(AuthChallenge, PeerChallenge, UserName, Password)</span></span>  
-</code></pre><p>比较 MyNtResponse 与 NtResponse，不相等则验证失败。</p>
-<h2 id="Radius_认证响应">Radius 认证响应</h2><p>调用 GenerateAuthenticatorResponse 方法得到 AuthenticatorResponse</p>
-<pre><code>GenerateAuthenticatorResponse<span class="list">(
-    <span class="keyword">Password</span>,
-    NtResponse,
-    PeerChallenge, 
-    AuthChallenge
-    UserName
-)</span> 
-</code></pre><p>GenerateAuthenticatorResponse 方法的实现参考 <a href="http://tools.ietf.org/html/rfc2759.html#section-8.7" target="_blank" rel="external">http://tools.ietf.org/html/rfc2759.html#section-8.7</a></p>
-<p>设置Radius响应消息属性  MS-CHAP2-Success  =  AuthenticatorResponse</p>
+        <p>ToughRADIUS V2.0.2 发布。</p>
+<p>ToughRADIUS V2.x版本并不是 V1.x版本的简单延续，而是一次完全重构，一次打破兼容性的重构。</p>
+<p>在保留核心功能的基础上，砍掉了大部分可有可无的功能，比如砍掉自助服务模块是一个非常大的动作。</p>
+<p>在技术框架上进行了完全的重写，并采用pypy这个更快的基础支撑平台，对V1.x版本进行了大刀阔斧的改造，对安装配置操作进行了精简和优化。</p>
+<p>相关文档请参考：<a href="http://doc.toughradius.net" target="_blank" rel="external">http://doc.toughradius.net</a></p>
+<h2 id="版本变更说明：">版本变更说明：</h2><ul>
+<li>移除了独立的系统控制管理子系统，部分功能合并到主管理系统。</li>
+<li>移除了自助服务子系统。</li>
+<li>新增API模块，提供第三方通过API来实现自助服务，扩展管理的能力。</li>
+<li>移除客户经理管理模块。</li>
+<li>移除黑白名单管理模块。</li>
+<li>移除充值卡管理模块。</li>
+<li>移除工单管理模块。</li>
+<li>暂时移除了用户消息跟踪模块。</li>
+<li>修复了一些bug。</li>
+<li>系统监听的端口现在只有3个必须的：1816，1812，1813，其他的全部移除。</li>
+</ul>
+<h2 id="V2-x_版本路线">V2.x 版本路线</h2><ul>
+<li>完善一个精简稳定的版本。</li>
+<li>完善API，扩展第三方模块实现。</li>
+</ul>
+<h2 id="温馨提示">温馨提示</h2><ul>
+<li>目前还不建议ToughRADIUS V2 版本投入生产环境使用。</li>
+<li>如果已经在生产环境使用的ToughRADIUS V1 版本够用，不用着急升级版本。</li>
+<li>V2.x的安装配置操作相比V1.x版本发生了很大变换，更加精简，但需要适应。</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.toughradius.org/2015/10/17/mschapv2/" data-id="ciktcfcl2000g7dqjyjelhsj7" class="article-share-link">Share</a>
+      <a data-url="http://blog.toughradius.org/2016/02/19/ver202/" data-id="ciktcfckq00067dqj5e52bebt" class="article-share-link">Share</a>
       
-        <a href="http://blog.toughradius.org/2015/10/17/mschapv2/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://blog.toughradius.org/2016/02/19/ver202/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/radius/">radius</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/release/">release</a></li></ul>
 
     </footer>
   </div>
@@ -130,19 +138,10 @@ PeerChallenge = MS-CHAP2-Response[<span class="number">2</span> : <span class="n
     
 <nav id="article-nav">
   
-    <a href="/2015/10/17/ver1202/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          ToughRADIUS V1.2.0.2 发布
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/10/13/ver1201/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/02/04/toughmysql-v0-0-1/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">ToughRADIUS V1.2.0.1 发布</div>
+      <div class="article-nav-title">ToughMySQL，为ToughRADIUS提供数据库双机热备支持</div>
     </a>
   
 </nav>
@@ -246,7 +245,7 @@ PeerChallenge = MS-CHAP2-Response[<span class="number">2</span> : <span class="n
 <script>
   var disqus_shortname = 'toughradius';
   
-  var disqus_url = 'http://blog.toughradius.org/2015/10/17/mschapv2/';
+  var disqus_url = 'http://blog.toughradius.org/2016/02/19/ver202/';
   
   (function(){
     var dsq = document.createElement('script');
