@@ -25,9 +25,6 @@ http://www.toughstruct.com
 链接地址：http://radius.toughstruct.net:1816/ 
 用户密码: admin/root
 
-- 自助服务界面
-
-链接地址：http://radius.toughstruct.net:1816/customer
 
 
 
