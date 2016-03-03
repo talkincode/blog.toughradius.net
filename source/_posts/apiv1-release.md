@@ -26,4 +26,4 @@ ToughRADIUS API要解决的三个问题：
 
 完整文档请访问：[《ToughRADIUS 接口文档》](http://docs.toughradius.net/toughradius_v2/api_docs.html)
 
-> 随着ToughRADIUS版本的更新完善，API接口内容也会持续完善。
+随着ToughRADIUS版本的更新完善，API接口内容也会持续完善。
