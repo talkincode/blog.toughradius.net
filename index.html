@@ -62,6 +62,69 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-apiv1-release" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/03/apiv1-release/" class="article-date">
+  <time datetime="2016-03-03T04:18:51.000Z" itemprop="datePublished">2016-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/03/apiv1-release/">ToughRADIUS API v1 发布</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ToughRADIUS API v1 发布了。</p>
+<p>ToughRADIUS API要解决的三个问题：</p>
+<ul>
+<li><p><strong>业务功能扩展</strong>：ToughRADIUS V2版本提供了一个精简的管理系统，但是对于一些客户比较复杂的业务需求会显得不够用，利用API可以实现业务功能的扩展，通过已有CRM等管理系统与ToughRADIUS实现对接。</p>
+</li>
+<li><p><strong>自助服务系统定制</strong>：ToughRADIUS V2版本移除了自助服务模块，我们希望把这个模块提供給第三方来实现。</p>
+</li>
+<li><p><strong> 移动终端APP开发</strong>：对于ToughRADIUS V2版本，无论是管理，自服务都是可以扩展到移动终端的，通过API可以支持IOS，Android，微信公众号开发扩展。</p>
+</li>
+</ul>
+<h2 id="协议说明">协议说明</h2><ul>
+<li>协议采用基于http的接口调用方式。</li>
+<li>消息发起方：第三方系统。</li>
+<li>消息接受方：TOUGHRADIUS系统。</li>
+<li>接口请求方法：HTTP GET 或者 POST，支持标准http1.1协议。</li>
+<li>消息报文编码：UTF-8，注意对参数进行 urlencode 编码</li>
+<li>接口鉴权：MD5签名，<code>md5(共享密钥+排序的参数值组合字符串)</code>,签名校验是双向的，消息接收方对请求消息进行签名验证，同时需对结果进行签名返回，消息发起方对响应结果的签名进行验证。</li>
+<li>当前接口版本：v1</li>
+</ul>
+<p>完整文档请访问：<a href="http://docs.toughradius.net/toughradius_v2/api_docs.html" target="_blank" rel="external">《ToughRADIUS 接口文档》</a></p>
+<blockquote>
+<p>随着ToughRADIUS版本的更新完善，API接口内容也会持续完善。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.toughradius.org/2016/03/03/apiv1-release/" data-id="cilbrono50000jeqje0gqrflq" class="article-share-link">Share</a>
+      
+        <a href="http://blog.toughradius.org/2016/03/03/apiv1-release/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/release/">release</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-ver202" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/02/19/ver202/" class="article-date">
@@ -114,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.toughradius.org/2016/02/19/ver202/" data-id="ciktciikk00068vqj5yfaiiiq" class="article-share-link">Share</a>
+      <a data-url="http://blog.toughradius.org/2016/02/19/ver202/" data-id="cilbronpf0004jeqj28k1o5s4" class="article-share-link">Share</a>
       
         <a href="http://blog.toughradius.org/2016/02/19/ver202/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -296,7 +359,7 @@ MASTER_LOG_POS: <span class="number">107</span>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.toughradius.org/2016/02/04/toughmysql-v0-0-1/" data-id="ciktciikt000d8vqj78ld43rt" class="article-share-link">Share</a>
+      <a data-url="http://blog.toughradius.org/2016/02/04/toughmysql-v0-0-1/" data-id="cilbronpo000ajeqj3k3e1h5s" class="article-share-link">Share</a>
       
         <a href="http://blog.toughradius.org/2016/02/04/toughmysql-v0-0-1/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -378,7 +441,7 @@ MASTER_LOG_POS: <span class="number">107</span>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.toughradius.org/2015/10/21/docker-mysql-create/" data-id="ciktciij300008vqjfpzo4c5s" class="article-share-link">Share</a>
+      <a data-url="http://blog.toughradius.org/2015/10/21/docker-mysql-create/" data-id="cilbronq3000ojeqjuhab6l21" class="article-share-link">Share</a>
       
         <a href="http://blog.toughradius.org/2015/10/21/docker-mysql-create/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -506,7 +569,7 @@ iptables -A FORWARD -s <span class="number">10.79</span><span class="number">.97
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.toughradius.org/2015/10/19/linux-pptpd-to-toughradius/" data-id="ciktciil1000j8vqj24lwyttw" class="article-share-link">Share</a>
+      <a data-url="http://blog.toughradius.org/2015/10/19/linux-pptpd-to-toughradius/" data-id="cilbronpw000ijeqjouh4r673" class="article-share-link">Share</a>
       
         <a href="http://blog.toughradius.org/2015/10/19/linux-pptpd-to-toughradius/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -558,7 +621,7 @@ iptables -A FORWARD -s <span class="number">10.79</span><span class="number">.97
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.toughradius.org/2015/10/17/ver1202/" data-id="ciktciikn00098vqjpt5rql4c" class="article-share-link">Share</a>
+      <a data-url="http://blog.toughradius.org/2015/10/17/ver1202/" data-id="cilbronpj0006jeqjwevzsr47" class="article-share-link">Share</a>
       
         <a href="http://blog.toughradius.org/2015/10/17/ver1202/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -625,7 +688,7 @@ PeerChallenge = MS-CHAP2-Response[<span class="number">2</span> : <span class="n
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.toughradius.org/2015/10/17/mschapv2/" data-id="ciktciikx000g8vqjtf89hzk1" class="article-share-link">Share</a>
+      <a data-url="http://blog.toughradius.org/2015/10/17/mschapv2/" data-id="cilbronps000fjeqjl76jjomn" class="article-share-link">Share</a>
       
         <a href="http://blog.toughradius.org/2015/10/17/mschapv2/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -677,7 +740,7 @@ PeerChallenge = MS-CHAP2-Response[<span class="number">2</span> : <span class="n
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.toughradius.org/2015/10/13/ver1201/" data-id="ciktciikq000b8vqjvxtt2r1g" class="article-share-link">Share</a>
+      <a data-url="http://blog.toughradius.org/2015/10/13/ver1201/" data-id="cilbronpl0008jeqjvjnj1cmf" class="article-share-link">Share</a>
       
         <a href="http://blog.toughradius.org/2015/10/13/ver1201/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -720,7 +783,7 @@ PeerChallenge = MS-CHAP2-Response[<span class="number">2</span> : <span class="n
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.toughradius.org/2015/10/07/intro/" data-id="ciktciil6000o8vqjki0xt85t" class="article-share-link">Share</a>
+      <a data-url="http://blog.toughradius.org/2015/10/07/intro/" data-id="cilbronq0000njeqj25z0atky" class="article-share-link">Share</a>
       
         <a href="http://blog.toughradius.org/2015/10/07/intro/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -743,7 +806,7 @@ PeerChallenge = MS-CHAP2-Response[<span class="number">2</span> : <span class="n
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptpd/">pptpd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/radius/">radius</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/release/">release</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptpd/">pptpd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/radius/">radius</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/release/">release</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -761,7 +824,7 @@ PeerChallenge = MS-CHAP2-Response[<span class="number">2</span> : <span class="n
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -771,6 +834,10 @@ PeerChallenge = MS-CHAP2-Response[<span class="number">2</span> : <span class="n
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/03/03/apiv1-release/">ToughRADIUS API v1 发布</a>
+          </li>
         
           <li>
             <a href="/2016/02/19/ver202/">ToughRADIUS V2.0.2 发布</a>
@@ -786,10 +853,6 @@ PeerChallenge = MS-CHAP2-Response[<span class="number">2</span> : <span class="n
         
           <li>
             <a href="/2015/10/19/linux-pptpd-to-toughradius/">Linux PPTP 对接 ToughRADIUS</a>
-          </li>
-        
-          <li>
-            <a href="/2015/10/17/ver1202/">ToughRADIUS V1.2.0.2 发布</a>
           </li>
         
       </ul>
