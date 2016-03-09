@@ -4,7 +4,7 @@
   <subtitle><![CDATA[服务中小微ISP，让运营变的更简单]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.toughradius.org/"/>
-  <updated>2016-03-09T07:53:42.000Z</updated>
+  <updated>2016-03-09T07:55:36.000Z</updated>
   <id>http://blog.toughradius.org/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[ToughRADIUS V2.0.2 发布]]></title>
+    <title><![CDATA[ToughRADIUS V2.0.5 发布]]></title>
     <link href="http://blog.toughradius.org/2016/03/09/ver205/"/>
     <id>http://blog.toughradius.org/2016/03/09/ver205/</id>
     <published>2016-03-09T07:47:58.000Z</published>
-    <updated>2016-03-09T07:53:42.000Z</updated>
+    <updated>2016-03-09T07:55:36.000Z</updated>
     <content type="html"><![CDATA[<p>ToughRADIUS V2.0.5 发布。</p>
 <p>该版本对API进行了完善调整，后续版本会继续完善API。同时会组件改进客户技术支持方面，该版本已经支持用户反馈，提交反馈操作将会提交当前ToughRADIUS的版本信息以及部分日志信息到 toughstruct.com，如果你填写了有效的电子邮件地址，toughstruct.com 可能会就您的反馈报告与您联系，您提交的日志信息都将按照 toughstruct.com 的隐私政策受到保护，提交该反馈表示您同意 toughstruct.com 使用您提交的信息来改进 ToughRADIUS 的产品与服务。</p>
 <h2 id="版本更新">版本更新</h2><ul>
