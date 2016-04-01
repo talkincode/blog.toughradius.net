@@ -12,6 +12,7 @@ _book/
 env/
 bin/
 build/
+node_modules/*
 develop-eggs/
 dist/
 eggs/
