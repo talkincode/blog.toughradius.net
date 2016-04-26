@@ -4,7 +4,7 @@
   <subtitle><![CDATA[服务中小微ISP，让运营变的更简单]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.toughradius.org/"/>
-  <updated>2016-03-09T07:55:36.000Z</updated>
+  <updated>2016-04-26T14:27:42.000Z</updated>
   <id>http://blog.toughradius.org/</id>
   
   <author>
@@ -13,6 +13,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[ToughRADIUS V2.1.0 正式版发布，全新里程碑]]></title>
+    <link href="http://blog.toughradius.org/2016/04/26/ver210/"/>
+    <id>http://blog.toughradius.org/2016/04/26/ver210/</id>
+    <published>2016-04-26T14:26:05.000Z</published>
+    <updated>2016-04-26T14:27:42.000Z</updated>
+    <content type="html"><![CDATA[<p>ToughRADIUS V2.1.0 正式版发布，全新里程碑</p>
+<p>这是自V1.2版本以后完全重构的全新版本，该版本完成了一期 API 的设计，修复前面版本的一些 bug。并大大提升性能。并且引入了全新的安装部署方式。</p>
+<h2 id="版本变更">版本变更</h2><ul>
+<li>完成一期规划的 API 接口。</li>
+<li>将数据库缓存与 session 管理替换为 redis。</li>
+<li>支持非 docker 模式的安装部署。</li>
+<li>优化 docker 构建。</li>
+<li>增加自有资费。</li>
+<li>修复大量 bug。</li>
+<li>改进系统性能。</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>ToughRADIUS V2.1.0 正式版发布，全新里程碑</p>
+<p>这是自V1.2版本以后完全重构的全新版本，该版本完成了一期 API 的设计，修复前面版本的一些 bug。并大大提升性能。并且引入了全新的安装部署方式。</p>
+<h2 id="版本变更">版本变更<]]>
+    </summary>
+    
+      <category term="release" scheme="http://blog.toughradius.org/tags/release/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[ToughRADIUS V2.0.5 发布]]></title>
