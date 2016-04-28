@@ -4,7 +4,7 @@
   <subtitle><![CDATA[服务中小微ISP，让运营变的更简单]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.toughradius.org/"/>
-  <updated>2016-04-28T01:39:27.000Z</updated>
+  <updated>2016-04-28T07:13:36.000Z</updated>
   <id>http://blog.toughradius.org/</id>
   
   <author>
@@ -15,17 +15,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[Docker 在CentOS7 中的安装配置视频教程]]></title>
+    <link href="http://blog.toughradius.org/2016/04/28/docker-install-video/"/>
+    <id>http://blog.toughradius.org/2016/04/28/docker-install-video/</id>
+    <published>2016-04-28T07:11:19.000Z</published>
+    <updated>2016-04-28T07:13:36.000Z</updated>
+    <content type="html"><![CDATA[<p>Docker 在CentOS7 中的安装配置视频教程以及Docker-compose工具的安装</p>
+<iframe height="498" width="720" src="http://player.youku.com/embed/XMTU1MDk2NzA1Ng==" frameborder="0" allowfullscreen></iframe>]]></content>
+    <summary type="html">
+    <![CDATA[<p>Docker 在CentOS7 中的安装配置视频教程以及Docker-compose工具的安装</p>
+<iframe height="498" width="720" src="http://player.youku.com/embed/XMTU1MDk2NzA1Ng==]]>
+    </summary>
+    
+      <category term="docker" scheme="http://blog.toughradius.org/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[ToughRADIUS (本地模式)安装配置视频教程]]></title>
     <link href="http://blog.toughradius.org/2016/04/28/toughradius-native-install-video/"/>
     <id>http://blog.toughradius.org/2016/04/28/toughradius-native-install-video/</id>
     <published>2016-04-28T01:34:49.000Z</published>
-    <updated>2016-04-28T01:39:27.000Z</updated>
+    <updated>2016-04-28T07:13:42.000Z</updated>
     <content type="html"><![CDATA[<p>ToughRADIUS (本地模式)安装配置视频教程, 对ToughRADIUS的安装流程有详细的讲解。</p>
-<iframe height="576" width="720" src="http://player.youku.com/embed/XMTU0OTk2OTk4NA==" frameborder="0" allowfullscreen></iframe>
+<iframe height="498" width="720" src="http://player.youku.com/embed/XMTU0OTk2OTk4NA==" frameborder="0" allowfullscreen></iframe>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>ToughRADIUS (本地模式)安装配置视频教程, 对ToughRADIUS的安装流程有详细的讲解。</p>
-<iframe height="576" width="720" src="http://player.youku.com/embed/XMTU0OTk2OTk]]>
+<iframe height="498" width="720" src="http://player.youku.com/embed/XMTU0OTk2OTk]]>
     </summary>
     
       <category term="toughradius" scheme="http://blog.toughradius.org/tags/toughradius/"/>
