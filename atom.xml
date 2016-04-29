@@ -4,7 +4,7 @@
   <subtitle><![CDATA[服务中小微ISP，让运营变的更简单]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.toughradius.org/"/>
-  <updated>2016-04-29T12:08:46.000Z</updated>
+  <updated>2016-04-29T12:56:58.000Z</updated>
   <id>http://blog.toughradius.org/</id>
   
   <author>
@@ -13,6 +13,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[如何从ToughRADIUS V1版本迁移数据到 ToughRADIUS V2版本]]></title>
+    <link href="http://blog.toughradius.org/2016/04/29/dbv1-to-dbv2/"/>
+    <id>http://blog.toughradius.org/2016/04/29/dbv1-to-dbv2/</id>
+    <published>2016-04-29T12:48:43.000Z</published>
+    <updated>2016-04-29T12:56:58.000Z</updated>
+    <content type="html"><![CDATA[<p>由于 ToughRADIUS V2版本 是一次打破兼容性的重构，数据结构并不完全兼容，因此对V1版本的数据迁移到V2版本，我们加入了特殊的数据转换支持。</p>
+<h2 id="迁移步骤">迁移步骤</h2><ol>
+<li>登陆 ToughRADIUS V1版本的系统管理控制台，进入到数据备份管理界面，执行数据备份，然后下载最新的备份文件。</li>
+<li>修改下载的备份文件，在文件名中加入trv1四个字符，比如改名后变成 trv1_toughradius-xxxxx.gz这样的名称。</li>
+<li>进入ToughRADIUS V2版本的管理控制台，进入数据备份管理功能界面，上传改了名称的备份文件。</li>
+<li>对上传的备份文件执行恢复操作，即可完成数据迁移。</li>
+<li>如果有多个操作员，需要对操作员重新分配权限和关联区域。</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>由于 ToughRADIUS V2版本 是一次打破兼容性的重构，数据结构并不完全兼容，因此对V1版本的数据迁移到V2版本，我们加入了特殊的数据转换支持。</p>
+<h2 id="迁移步骤">迁移步骤</h2><ol>
+<li>登陆 ToughRADIUS V1版本的系统管理]]>
+    </summary>
+    
+      <category term="toughradius" scheme="http://blog.toughradius.org/tags/toughradius/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[PandaRSS 自助服务系统安装配置]]></title>

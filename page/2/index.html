@@ -62,6 +62,134 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-linux-pptpd-to-toughradius" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/19/linux-pptpd-to-toughradius/" class="article-date">
+  <time datetime="2015-10-19T02:25:32.000Z" itemprop="datePublished">2015-10-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/19/linux-pptpd-to-toughradius/">Linux PPTP 对接 ToughRADIUS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以 ubuntu14 为例，谈谈PPTP对接ToughRADIUS</p>
+<h3 id="安装pptpd服务">安装pptpd服务</h3><pre><code>sudo apt-<span class="built_in">get</span> <span class="keyword">update</span> -y
+sudo apt-<span class="built_in">get</span> install -y pptpd iptables libfreeradius-client2 libfreeradius-client-<span class="built_in">dev</span>
+</code></pre><p>如果/etc/radiusclient目录不存在，建立一个radius配置目录链接 </p>
+<pre><code>ln -s <span class="regexp">/usr/</span>local<span class="regexp">/etc/</span>radiusclient <span class="regexp">/etc/</span>radiusclient
+</code></pre><h3 id="配置pptpd与radius">配置pptpd与radius</h3><p>修改配置文件 /etc/pptpd.conf</p>
+<pre><code>option /etc/ppp/pptpd-options
+<span class="hexcolor">#deb</span>ug
+<span class="id">#stimeout</span> <span class="number">10</span>
+logwtmp
+<span class="id">#bcrelay</span> eth1
+<span class="id">#delegate</span>
+<span class="id">#connections</span> <span class="number">100</span>
+localip <span class="number">10.79</span>.<span class="number">97.1</span>
+remoteip <span class="number">10.79</span>.<span class="number">97.10</span>-<span class="number">200</span>
+</code></pre><p>修改配置文件 /etc/ppp/pptpd-options，注意这里采用了maschapv2认证方式，并采用mppe128位加密模式。</p>
+<pre><code>name pptpd
+refuse-pap
+refuse-chap
+refuse-mschap
+<span class="keyword">require</span>-mschap-v2
+<span class="keyword">require</span>-mppe-<span class="number">128</span>
+
+<span class="comment"># Network and Routing</span>
+ms-dns <span class="number">8.8</span>.<span class="number">8.8</span>
+ms-dns <span class="number">8.8</span>.<span class="number">4.4</span>
+proxyarp
+nodefaultroute
+
+<span class="comment">#Logging</span>
+<span class="comment">#debug</span>
+<span class="comment">#dump</span>
+<span class="comment">#logfile /var/log/pptpd.log</span>
+
+<span class="comment"># Miscellaneous</span>
+lock
+nobsdcomp
+novj
+novjccomp
+<span class="comment">#nologfd</span>
+
+plugin /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">pppd</span>/2.4.5/<span class="title">radius</span>.<span class="title">so</span></span>
+plugin /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">pppd</span>/2.4.5/<span class="title">radattr</span>.<span class="title">so</span></span>
+radius-config-file /etc/radiusclient/radiusclient.conf
+</code></pre><p>配置/etc/radiusclient/radiusclient.conf , 注意配置authserver，acctserver为你实际的radius服务器地址和端口。</p>
+<pre><code>auth_order radius
+login_tries <span class="number">4</span>
+login_timeout <span class="number">60</span>
+nologin <span class="regexp">/etc/</span>nologin
+authserver radius.toughctruc.<span class="string">net:</span><span class="number">1812</span>
+acctserver radius.toughctruc.<span class="string">net:</span><span class="number">1813</span>
+servers <span class="regexp">/etc/</span>radiusclient/servers
+dictionary <span class="regexp">/etc/</span>radiusclient/dictionary
+seqfile <span class="regexp">/var/</span>run/radius.seq
+mapfile <span class="regexp">/etc/</span>radiusclient/port-id-map
+default_realm
+radius_timeout <span class="number">10</span>
+radius_retries <span class="number">3</span>
+login_local <span class="regexp">/bin/</span>login
+</code></pre><p>如果 /etc/radiusclient/port-id-map 不存在，建立一个空文件</p>
+<pre><code><span class="title">echo</span> <span class="string">""</span> &gt; /etc/radiusclient/<span class="foreign"><span class="keyword">port</span>-id-map</span>
+</code></pre><p>配置radius服务器和共享密钥 /etc/radiusclient/servers</p>
+<pre><code>radius<span class="class">.toughstruct</span><span class="class">.net</span>     testing123
+</code></pre><p>为了支持mschapv2认证，需要加入 dictionary.microsoft字典， 修改字典文件 /etc/radiusclient/dictionary，在末尾务必加上 ：</p>
+<pre><code><span class="keyword">INCLUDE</span> <span class="regexp">/etc/</span>radiusclient<span class="regexp">/dictionary.microsoft</span>
+</code></pre><p>如果目录中没有这个字典，可以下载：<a href="https://raw.githubusercontent.com/talkincode/ToughVPN/master/radius/dictionary/dictionary.microsoft" target="_blank" rel="external">https://raw.githubusercontent.com/talkincode/ToughVPN/master/radius/dictionary/dictionary.microsoft</a></p>
+<h3 id="修改防火墙配置并修改内核转发支持">修改防火墙配置并修改内核转发支持</h3><p>注意IP地址与/etc/pptpd.conf中配置的一致</p>
+<pre><code>iptables -t nat -A POSTROUTING -s <span class="number">10.79</span><span class="number">.97</span><span class="number">.0</span>/<span class="number">24</span> -o eth0 -j MASQUERADE
+iptables -A FORWARD -s <span class="number">10.79</span><span class="number">.97</span><span class="number">.0</span>/<span class="number">24</span> -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -j TCPMSS --<span class="built_in">set</span>-mss <span class="number">1356</span>
+</code></pre><p>设置内核转发支持</p>
+<pre><code>sysctl -w net<span class="class">.ipv4</span><span class="class">.ip_forward</span>=<span class="number">1</span>
+</code></pre><p>启动pptpd服务</p>
+<pre><code>service pptpd <span class="built_in">start</span> 
+</code></pre><h3 id="配置ToughRADIUS">配置ToughRADIUS</h3><p>在ToughRADIUS系统中，需要把PPTP作为接入设备加入，在BAS信息管理里增加一个标准配置即可。</p>
+<p>增加资费，新增用户信息，接下来就可以进行拨号测试了。</p>
+<p>在拨号过程中，可以通过用户消息跟踪或系统日志查看进行调试，使用mschapv2认证时，用户消息必定会有两个特定属性：MS-CHAP-Challenge 和 MS-CHAP2-Response，如果用户消息中没有此属性，则可能的原因是：</p>
+<ul>
+<li>pptp服务没有配置require-mschap-v2  和 require-mppe-128</li>
+<li>系统内核不支持mppe</li>
+<li>没有加入dictionary.microsoft</li>
+<li>如果没有上面的问题，试着修改 require-mppe-128 为 require-mppe</li>
+</ul>
+<h3 id="注意事项">注意事项</h3><p>要支持mschapv2，需要系统内核支持MPPE，输入指令：</p>
+<pre><code>modprobe ppp-compress-<span class="number">18</span> &amp;&amp; <span class="built_in">echo</span> ok
+</code></pre><p>如果输出ok，则系统内核支持。</p>
+<p>在测试过程中，可以开启debug收集日志进行诊断，以及配合Radius服务器的日志进行诊断。</p>
+<p>更多帮助，请参考 <a href="http://poptop.sourceforge.net/dox/" target="_blank" rel="external">http://poptop.sourceforge.net/dox/</a></p>
+<p>另外，你也可以关注我们的这个开源项目：<a href="https://github.com/talkincode/ToughVPN" target="_blank" rel="external">https://github.com/talkincode/ToughVPN  </a>  ，这个项目计划实现更简单的一键安装以及常识Docker模式的部署。 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.toughradius.org/2015/10/19/linux-pptpd-to-toughradius/" data-id="cinlq51hc000sbzqjdz8vlc5v" class="article-share-link">Share</a>
+      
+        <a href="http://blog.toughradius.org/2015/10/19/linux-pptpd-to-toughradius/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pptpd/">pptpd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vpn/">vpn</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-ver1202" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/17/ver1202/" class="article-date">
@@ -100,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.toughradius.org/2015/10/17/ver1202/" data-id="cinlof17f000a2sqjz67jwiw2" class="article-share-link">Share</a>
+      <a data-url="http://blog.toughradius.org/2015/10/17/ver1202/" data-id="cinlq51e0000abzqjjzanq9vb" class="article-share-link">Share</a>
       
         <a href="http://blog.toughradius.org/2015/10/17/ver1202/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -167,7 +295,7 @@ PeerChallenge = MS-CHAP2-Response[<span class="number">2</span> : <span class="n
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.toughradius.org/2015/10/17/mschapv2/" data-id="cinlof18t000p2sqjsqt2gwgf" class="article-share-link">Share</a>
+      <a data-url="http://blog.toughradius.org/2015/10/17/mschapv2/" data-id="cinlq51gu000pbzqjmbhy58yk" class="article-share-link">Share</a>
       
         <a href="http://blog.toughradius.org/2015/10/17/mschapv2/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -219,7 +347,7 @@ PeerChallenge = MS-CHAP2-Response[<span class="number">2</span> : <span class="n
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.toughradius.org/2015/10/13/ver1201/" data-id="cinlof17m000c2sqjblmu96rl" class="article-share-link">Share</a>
+      <a data-url="http://blog.toughradius.org/2015/10/13/ver1201/" data-id="cinlq51e6000cbzqjihcla5qo" class="article-share-link">Share</a>
       
         <a href="http://blog.toughradius.org/2015/10/13/ver1201/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -262,7 +390,7 @@ PeerChallenge = MS-CHAP2-Response[<span class="number">2</span> : <span class="n
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.toughradius.org/2015/10/07/intro/" data-id="cinlof19a000x2sqj30e019cr" class="article-share-link">Share</a>
+      <a data-url="http://blog.toughradius.org/2015/10/07/intro/" data-id="cinlq51i4000xbzqjs4pbn0qi" class="article-share-link">Share</a>
       
         <a href="http://blog.toughradius.org/2015/10/07/intro/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -289,7 +417,7 @@ PeerChallenge = MS-CHAP2-Response[<span class="number">2</span> : <span class="n
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pandarss/">pandarss</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptpd/">pptpd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/radius/">radius</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/release/">release</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/toughradius/">toughradius</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pandarss/">pandarss</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pptpd/">pptpd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/radius/">radius</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/release/">release</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/toughradius/">toughradius</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -298,7 +426,7 @@ PeerChallenge = MS-CHAP2-Response[<span class="number">2</span> : <span class="n
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/tags/pandarss/" style="font-size: 10px;">pandarss</a> <a href="/tags/pptpd/" style="font-size: 10px;">pptpd</a> <a href="/tags/radius/" style="font-size: 10px;">radius</a> <a href="/tags/release/" style="font-size: 20px;">release</a> <a href="/tags/toughradius/" style="font-size: 10px;">toughradius</a> <a href="/tags/vpn/" style="font-size: 10px;">vpn</a>
+      <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/tags/pandarss/" style="font-size: 10px;">pandarss</a> <a href="/tags/pptpd/" style="font-size: 10px;">pptpd</a> <a href="/tags/radius/" style="font-size: 10px;">radius</a> <a href="/tags/release/" style="font-size: 20px;">release</a> <a href="/tags/toughradius/" style="font-size: 13.33px;">toughradius</a> <a href="/tags/vpn/" style="font-size: 10px;">vpn</a>
     </div>
   </div>
 
@@ -307,7 +435,7 @@ PeerChallenge = MS-CHAP2-Response[<span class="number">2</span> : <span class="n
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -317,6 +445,10 @@ PeerChallenge = MS-CHAP2-Response[<span class="number">2</span> : <span class="n
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/04/29/dbv1-to-dbv2/">如何从ToughRADIUS V1版本迁移数据到 ToughRADIUS V2版本</a>
+          </li>
         
           <li>
             <a href="/2016/04/29/pandarss-self-service-intro/">PandaRSS 自助服务系统安装配置</a>
@@ -332,10 +464,6 @@ PeerChallenge = MS-CHAP2-Response[<span class="number">2</span> : <span class="n
         
           <li>
             <a href="/2016/04/26/ver210/">ToughRADIUS V2.1.0 正式版发布，全新里程碑</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/09/ver205/">ToughRADIUS V2.0.5 发布</a>
           </li>
         
       </ul>
