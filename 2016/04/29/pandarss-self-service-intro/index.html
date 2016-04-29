@@ -3,33 +3,48 @@
 <head>
   <meta charset="utf-8">
   
-  <title>ToughRADIUS API v1 发布 | ToughRADIUS 博客</title>
+  <title>PandaRSS 自助服务系统安装配置 | ToughRADIUS 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ToughRADIUS API v1 发布了。
-ToughRADIUS API要解决的三个问题：
+  <meta name="description" content="PandaRSS 是一个第三方开发者(pandaman)提供的基于 ToughRADIUS V2版本 API 的自助服务系统。
+PandaRSS 为ToughRADIUS 的使用者提供了一个网上服务渠道。
+目前PandaRSS实现了以下功能：
+通过支付宝套餐资费在线订购开户。
+支持已有账号登陆查看账号信息。
+支持已有账号修改密码。
+支持已有账号查看交易记录。
 
-业务功能扩展：ToughRADIUS V2版本提供了一个精简的管理系统，但是对于一些客户比较复杂的业务需求会显得不够用，利用API可以实现业务功能的扩展，通过已有CRM等管理系统与ToughRADIUS实现对接。
-
-自助服务系统定制：ToughRADIUS V2版本移除了自助服务模块，我们希望把这个">
+快速指南运行环境
+Linux 
+Py">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ToughRADIUS API v1 发布">
-<meta property="og:url" content="http://blog.toughradius.org/2016/03/03/apiv1-release/index.html">
+<meta property="og:title" content="PandaRSS 自助服务系统安装配置">
+<meta property="og:url" content="http://blog.toughradius.org/2016/04/29/pandarss-self-service-intro/index.html">
 <meta property="og:site_name" content="ToughRADIUS 博客">
-<meta property="og:description" content="ToughRADIUS API v1 发布了。
-ToughRADIUS API要解决的三个问题：
+<meta property="og:description" content="PandaRSS 是一个第三方开发者(pandaman)提供的基于 ToughRADIUS V2版本 API 的自助服务系统。
+PandaRSS 为ToughRADIUS 的使用者提供了一个网上服务渠道。
+目前PandaRSS实现了以下功能：
+通过支付宝套餐资费在线订购开户。
+支持已有账号登陆查看账号信息。
+支持已有账号修改密码。
+支持已有账号查看交易记录。
 
-业务功能扩展：ToughRADIUS V2版本提供了一个精简的管理系统，但是对于一些客户比较复杂的业务需求会显得不够用，利用API可以实现业务功能的扩展，通过已有CRM等管理系统与ToughRADIUS实现对接。
-
-自助服务系统定制：ToughRADIUS V2版本移除了自助服务模块，我们希望把这个">
-<meta property="og:updated_time" content="2016-03-03T04:24:33.000Z">
+快速指南运行环境
+Linux 
+Py">
+<meta property="og:updated_time" content="2016-04-29T12:08:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ToughRADIUS API v1 发布">
-<meta name="twitter:description" content="ToughRADIUS API v1 发布了。
-ToughRADIUS API要解决的三个问题：
+<meta name="twitter:title" content="PandaRSS 自助服务系统安装配置">
+<meta name="twitter:description" content="PandaRSS 是一个第三方开发者(pandaman)提供的基于 ToughRADIUS V2版本 API 的自助服务系统。
+PandaRSS 为ToughRADIUS 的使用者提供了一个网上服务渠道。
+目前PandaRSS实现了以下功能：
+通过支付宝套餐资费在线订购开户。
+支持已有账号登陆查看账号信息。
+支持已有账号修改密码。
+支持已有账号查看交易记录。
 
-业务功能扩展：ToughRADIUS V2版本提供了一个精简的管理系统，但是对于一些客户比较复杂的业务需求会显得不够用，利用API可以实现业务功能的扩展，通过已有CRM等管理系统与ToughRADIUS实现对接。
-
-自助服务系统定制：ToughRADIUS V2版本移除了自助服务模块，我们希望把这个">
+快速指南运行环境
+Linux 
+Py">
   
   
     <link rel="icon" href="/favicon.png">
@@ -76,10 +91,10 @@ ToughRADIUS API要解决的三个问题：
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-apiv1-release" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-pandarss-self-service-intro" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/03/03/apiv1-release/" class="article-date">
-  <time datetime="2016-03-03T04:18:51.000Z" itemprop="datePublished">2016-03-03</time>
+    <a href="/2016/04/29/pandarss-self-service-intro/" class="article-date">
+  <time datetime="2016-04-29T12:02:43.000Z" itemprop="datePublished">2016-04-29</time>
 </a>
     
   </div>
@@ -90,7 +105,7 @@ ToughRADIUS API要解决的三个问题：
         
   
     <h1 class="article-title" itemprop="name">
-      ToughRADIUS API v1 发布
+      PandaRSS 自助服务系统安装配置
     </h1>
   
 
@@ -98,37 +113,71 @@ ToughRADIUS API要解决的三个问题：
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>ToughRADIUS API v1 发布了。</p>
-<p>ToughRADIUS API要解决的三个问题：</p>
-<ul>
-<li><p><strong>业务功能扩展</strong>：ToughRADIUS V2版本提供了一个精简的管理系统，但是对于一些客户比较复杂的业务需求会显得不够用，利用API可以实现业务功能的扩展，通过已有CRM等管理系统与ToughRADIUS实现对接。</p>
-</li>
-<li><p><strong>自助服务系统定制</strong>：ToughRADIUS V2版本移除了自助服务模块，我们希望把这个模块提供給第三方来实现。</p>
-</li>
-<li><p><strong> 移动终端APP开发</strong>：对于ToughRADIUS V2版本，无论是管理，自服务都是可以扩展到移动终端的，通过API可以支持IOS，Android，微信公众号开发扩展。</p>
-</li>
+        <p>PandaRSS 是一个第三方开发者(pandaman)提供的基于 ToughRADIUS V2版本 API 的自助服务系统。</p>
+<p>PandaRSS 为ToughRADIUS 的使用者提供了一个网上服务渠道。</p>
+<h2 id="目前PandaRSS实现了以下功能：">目前PandaRSS实现了以下功能：</h2><ul>
+<li>通过支付宝套餐资费在线订购开户。</li>
+<li>支持已有账号登陆查看账号信息。</li>
+<li>支持已有账号修改密码。</li>
+<li>支持已有账号查看交易记录。</li>
 </ul>
-<h2 id="协议说明">协议说明</h2><ul>
-<li>协议采用基于http的接口调用方式。</li>
-<li>消息发起方：第三方系统。</li>
-<li>消息接受方：TOUGHRADIUS系统。</li>
-<li>接口请求方法：HTTP GET 或者 POST，支持标准http1.1协议。</li>
-<li>消息报文编码：UTF-8，注意对参数进行 urlencode 编码</li>
-<li>接口鉴权：MD5签名，<code>md5(共享密钥+排序的参数值组合字符串)</code>,签名校验是双向的，消息接收方对请求消息进行签名验证，同时需对结果进行签名返回，消息发起方对响应结果的签名进行验证。</li>
-<li>当前接口版本：v1</li>
+<h2 id="快速指南">快速指南</h2><h3 id="运行环境">运行环境</h3><ul>
+<li>Linux </li>
+<li>Python 2.7</li>
+<li>pip </li>
+<li>Twisted&gt;=15.0.0 可选</li>
+<li>bottle&gt;=0.12.7</li>
 </ul>
-<p>完整文档请访问：<a href="http://docs.toughradius.net/toughradius_v2/api_docs.html" target="_blank" rel="external">《ToughRADIUS 接口文档》</a></p>
-<p>随着ToughRADIUS版本的更新完善，API接口内容也会持续完善。</p>
+<h3 id="安装">安装</h3><pre><code>pip  <span class="operator"><span class="keyword">install</span> -U  https://github.com/PandaPark/PandaRSS/<span class="keyword">archive</span>/<span class="keyword">master</span>.zip
+
+或者
+
+pip <span class="keyword">install</span> pandarss</span>
+</code></pre><h3 id="配置">配置</h3><p>新增加一个配置文件 /etc/pandarss.conf,内容如下</p>
+<pre><code><span class="title">[system]</span>
+<span class="setting">host = <span class="value"><span class="number">0.0</span>.<span class="number">0.0</span></span></span>
+<span class="setting">port = <span class="value"><span class="number">1819</span></span></span>
+<span class="setting">home_site = <span class="value">www.mydomain.com</span></span>
+<span class="setting">api_url = <span class="value">http://x.x.x.x:<span class="number">1816</span>/api/v1</span></span>
+<span class="setting">api_key = <span class="value">CRTCcMB7tfnXU8aXIyfavfuqruvXkNng</span></span>
+<span class="setting">session_secret = <span class="value">CRTCcMB7tfnXU8aXIyfavfuqruvXkNng</span></span>
+<span class="title">
+[alipay]</span>
+<span class="setting">alipay_key = <span class="value">jrid3242fs52234scxdzqoajmww</span></span>
+<span class="setting">alipay_partner = <span class="value"><span class="number">2342342342342</span></span></span>
+<span class="setting">alipay_seller_email = <span class="value">mypay@xxxx.com</span></span>
+<span class="setting">alipay_return_url = <span class="value">http://www.mydomain.com/alipay/return</span></span>
+<span class="setting">alipay_notify_url = <span class="value">http://www.mydomain.com/order/verify</span></span>
+</code></pre><ul>
+<li>api_url： 请填写部署的ToughRADIUS的服务器地址，替换ip，端口即可</li>
+<li>api_key： 请填写部署的ToughRADIUS的安全密钥</li>
+<li>session_secret： 一个32位的字符串，用来做cookie加密</li>
+</ul>
+<p>支付宝配置参数，请根据你的支付宝申请的直接到账支付提供的参数，要使用支付宝支付，服务器需要绑定域名，建议通过nginx等代理服务器实现。</p>
+<h3 id="运行">运行</h3><p>输入 pandarss 会直接以非守护进程模式运行，按Ctrl+C可退出。</p>
+<p>若要以守护进程模式运行，可使用nohup命令：</p>
+<pre><code><span class="title">nohup</span> pandarss &amp;
+</code></pre><p>默认的 pandarss  运行模式性能不高，可以使用基于twisted异步高性能网络框架来运行</p>
+<pre><code><span class="title">nohup</span> pandarss_txrun &amp;
+</code></pre><h3 id="绑定到ToughRADIUS服务运行">绑定到ToughRADIUS服务运行</h3><p>如果你的ToughRADIUS是以本地模式安装的，可以在ToughRADIUS的服务进程中配置pandarss进程。</p>
+<p>修改 /etc/toughradius.conf, 加入以下内容</p>
+<pre><code><span class="title">[program:pandarss]</span>
+<span class="setting">command=<span class="value">pandarss_txrun</span></span>
+<span class="setting">startretries = <span class="value"><span class="number">10</span></span></span>
+<span class="setting">autorestart = <span class="value"><span class="keyword">true</span></span></span>
+<span class="setting">redirect_stderr=<span class="value"><span class="keyword">true</span></span></span>
+<span class="setting">stdout_logfile=<span class="value">/var/toughradius/pandarss.log</span></span>
+</code></pre><p>这样pandarss可以随toughradius的进程启动停止。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.toughradius.org/2016/03/03/apiv1-release/" data-id="cinlof13p00002sqjftocae4a" class="article-share-link">Share</a>
+      <a data-url="http://blog.toughradius.org/2016/04/29/pandarss-self-service-intro/" data-id="cinlof18e000m2sqjnnhhdtyz" class="article-share-link">Share</a>
       
-        <a href="http://blog.toughradius.org/2016/03/03/apiv1-release/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://blog.toughradius.org/2016/04/29/pandarss-self-service-intro/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/release/">release</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pandarss/">pandarss</a></li></ul>
 
     </footer>
   </div>
@@ -136,19 +185,10 @@ ToughRADIUS API要解决的三个问题：
     
 <nav id="article-nav">
   
-    <a href="/2016/03/09/ver205/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          ToughRADIUS V2.0.5 发布
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/02/19/ver202/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/04/28/docker-install-video/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">ToughRADIUS V2.0.2 发布</div>
+      <div class="article-nav-title">Docker 在CentOS7 中的安装配置视频教程</div>
     </a>
   
 </nav>
@@ -252,7 +292,7 @@ ToughRADIUS API要解决的三个问题：
 <script>
   var disqus_shortname = 'toughradius';
   
-  var disqus_url = 'http://blog.toughradius.org/2016/03/03/apiv1-release/';
+  var disqus_url = 'http://blog.toughradius.org/2016/04/29/pandarss-self-service-intro/';
   
   (function(){
     var dsq = document.createElement('script');

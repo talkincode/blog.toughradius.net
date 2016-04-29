@@ -4,7 +4,7 @@
   <subtitle><![CDATA[服务中小微ISP，让运营变的更简单]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.toughradius.org/"/>
-  <updated>2016-04-28T07:13:36.000Z</updated>
+  <updated>2016-04-29T12:08:46.000Z</updated>
   <id>http://blog.toughradius.org/</id>
   
   <author>
@@ -13,6 +13,78 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[PandaRSS 自助服务系统安装配置]]></title>
+    <link href="http://blog.toughradius.org/2016/04/29/pandarss-self-service-intro/"/>
+    <id>http://blog.toughradius.org/2016/04/29/pandarss-self-service-intro/</id>
+    <published>2016-04-29T12:02:43.000Z</published>
+    <updated>2016-04-29T12:08:46.000Z</updated>
+    <content type="html"><![CDATA[<p>PandaRSS 是一个第三方开发者(pandaman)提供的基于 ToughRADIUS V2版本 API 的自助服务系统。</p>
+<p>PandaRSS 为ToughRADIUS 的使用者提供了一个网上服务渠道。</p>
+<h2 id="目前PandaRSS实现了以下功能：">目前PandaRSS实现了以下功能：</h2><ul>
+<li>通过支付宝套餐资费在线订购开户。</li>
+<li>支持已有账号登陆查看账号信息。</li>
+<li>支持已有账号修改密码。</li>
+<li>支持已有账号查看交易记录。</li>
+</ul>
+<h2 id="快速指南">快速指南</h2><h3 id="运行环境">运行环境</h3><ul>
+<li>Linux </li>
+<li>Python 2.7</li>
+<li>pip </li>
+<li>Twisted&gt;=15.0.0 可选</li>
+<li>bottle&gt;=0.12.7</li>
+</ul>
+<h3 id="安装">安装</h3><pre><code>pip  <span class="operator"><span class="keyword">install</span> -U  https://github.com/PandaPark/PandaRSS/<span class="keyword">archive</span>/<span class="keyword">master</span>.zip
+
+或者
+
+pip <span class="keyword">install</span> pandarss</span>
+</code></pre><h3 id="配置">配置</h3><p>新增加一个配置文件 /etc/pandarss.conf,内容如下</p>
+<pre><code><span class="title">[system]</span>
+<span class="setting">host = <span class="value"><span class="number">0.0</span>.<span class="number">0.0</span></span></span>
+<span class="setting">port = <span class="value"><span class="number">1819</span></span></span>
+<span class="setting">home_site = <span class="value">www.mydomain.com</span></span>
+<span class="setting">api_url = <span class="value">http://x.x.x.x:<span class="number">1816</span>/api/v1</span></span>
+<span class="setting">api_key = <span class="value">CRTCcMB7tfnXU8aXIyfavfuqruvXkNng</span></span>
+<span class="setting">session_secret = <span class="value">CRTCcMB7tfnXU8aXIyfavfuqruvXkNng</span></span>
+<span class="title">
+[alipay]</span>
+<span class="setting">alipay_key = <span class="value">jrid3242fs52234scxdzqoajmww</span></span>
+<span class="setting">alipay_partner = <span class="value"><span class="number">2342342342342</span></span></span>
+<span class="setting">alipay_seller_email = <span class="value">mypay@xxxx.com</span></span>
+<span class="setting">alipay_return_url = <span class="value">http://www.mydomain.com/alipay/return</span></span>
+<span class="setting">alipay_notify_url = <span class="value">http://www.mydomain.com/order/verify</span></span>
+</code></pre><ul>
+<li>api_url： 请填写部署的ToughRADIUS的服务器地址，替换ip，端口即可</li>
+<li>api_key： 请填写部署的ToughRADIUS的安全密钥</li>
+<li>session_secret： 一个32位的字符串，用来做cookie加密</li>
+</ul>
+<p>支付宝配置参数，请根据你的支付宝申请的直接到账支付提供的参数，要使用支付宝支付，服务器需要绑定域名，建议通过nginx等代理服务器实现。</p>
+<h3 id="运行">运行</h3><p>输入 pandarss 会直接以非守护进程模式运行，按Ctrl+C可退出。</p>
+<p>若要以守护进程模式运行，可使用nohup命令：</p>
+<pre><code><span class="title">nohup</span> pandarss &amp;
+</code></pre><p>默认的 pandarss  运行模式性能不高，可以使用基于twisted异步高性能网络框架来运行</p>
+<pre><code><span class="title">nohup</span> pandarss_txrun &amp;
+</code></pre><h3 id="绑定到ToughRADIUS服务运行">绑定到ToughRADIUS服务运行</h3><p>如果你的ToughRADIUS是以本地模式安装的，可以在ToughRADIUS的服务进程中配置pandarss进程。</p>
+<p>修改 /etc/toughradius.conf, 加入以下内容</p>
+<pre><code><span class="title">[program:pandarss]</span>
+<span class="setting">command=<span class="value">pandarss_txrun</span></span>
+<span class="setting">startretries = <span class="value"><span class="number">10</span></span></span>
+<span class="setting">autorestart = <span class="value"><span class="keyword">true</span></span></span>
+<span class="setting">redirect_stderr=<span class="value"><span class="keyword">true</span></span></span>
+<span class="setting">stdout_logfile=<span class="value">/var/toughradius/pandarss.log</span></span>
+</code></pre><p>这样pandarss可以随toughradius的进程启动停止。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>PandaRSS 是一个第三方开发者(pandaman)提供的基于 ToughRADIUS V2版本 API 的自助服务系统。</p>
+<p>PandaRSS 为ToughRADIUS 的使用者提供了一个网上服务渠道。</p>
+<h2 id="目前PandaRSS实现了以下]]>
+    </summary>
+    
+      <category term="pandarss" scheme="http://blog.toughradius.org/tags/pandarss/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Docker 在CentOS7 中的安装配置视频教程]]></title>
