@@ -10,20 +10,31 @@ toughstruct是ToughRADIUS开发团队的代号，是我们对产品的理念。�
 
 http://www.toughstruct.com
 
-## 产品演示
+## 交流社区
 
-### ToughRADIUS
+http://forum.toughcloud.net
 
-- 主要端口
+### 产品演示
 
-认证端口：1812
-计费端口：1813
-管理端口：1816
+ToughRADIUS 提供了两个在线版本演示，开源版本和企业版本。
 
-- 运营管理界面
+ToughRADIUS 在开源版的基础上新增了更多高级管理功能，如二级社区，票据打印，工单管理等。
 
-链接地址：http://radius.toughstruct.net:1816/ 
-用户密码: admin/root
+#### ToughRADIUS 开源版 
+
+管理地址: http://demo.std.toughradius.net
+
+认证地址：121.201.15.35 1812
+
+记账地址：121.201.15.35 1813
+
+#### ToughRADIUS 企业版
+
+管理地址: http://demo.ee.toughradius.net
+
+认证地址：121.201.15.35 2812
+
+记账地址：121.201.15.35 2813
 
 
 
