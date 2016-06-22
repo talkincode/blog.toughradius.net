@@ -3,42 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>ToughRADIUS V1.2.0.2 发布 | ToughRADIUS 博客</title>
+  <title>Archives: 2016/6 | ToughRADIUS 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ToughRADIUS V1.2.0.2 发布。
-版本变更说明：
-修复了系统创建后，用户密码认证失效，全部放行的bug。
-修复了无法使用mschapv2认证的错误，支持mppe128位加密。
-删除了mschapv1的支持。
-
-升级指南可在系统控制管理界面里直接升级稳定版，无数据库结构变动，但建议还是要备份数据。
-如果界面升级失败，可在主机终端用以下指令升级：
-docker exec trserve">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ToughRADIUS V1.2.0.2 发布">
-<meta property="og:url" content="http://blog.toughradius.org/2015/10/17/ver1202/index.html">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ToughRADIUS 博客">
+<meta property="og:url" content="http://blog.toughradius.org/archives/2016/06/index.html">
 <meta property="og:site_name" content="ToughRADIUS 博客">
-<meta property="og:description" content="ToughRADIUS V1.2.0.2 发布。
-版本变更说明：
-修复了系统创建后，用户密码认证失效，全部放行的bug。
-修复了无法使用mschapv2认证的错误，支持mppe128位加密。
-删除了mschapv1的支持。
-
-升级指南可在系统控制管理界面里直接升级稳定版，无数据库结构变动，但建议还是要备份数据。
-如果界面升级失败，可在主机终端用以下指令升级：
-docker exec trserve">
-<meta property="og:updated_time" content="2015-10-17T07:28:14.000Z">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ToughRADIUS V1.2.0.2 发布">
-<meta name="twitter:description" content="ToughRADIUS V1.2.0.2 发布。
-版本变更说明：
-修复了系统创建后，用户密码认证失效，全部放行的bug。
-修复了无法使用mschapv2认证的错误，支持mppe128位加密。
-删除了mschapv1的支持。
-
-升级指南可在系统控制管理界面里直接升级稳定版，无数据库结构变动，但建议还是要备份数据。
-如果界面升级失败，可在主机终端用以下指令升级：
-docker exec trserve">
+<meta name="twitter:title" content="ToughRADIUS 博客">
+<meta name="twitter:description">
   
   
     <link rel="icon" href="/favicon.png">
@@ -85,83 +60,39 @@ docker exec trserve">
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-ver1202" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/17/ver1202/" class="article-date">
-  <time datetime="2015-10-17T07:22:51.000Z" itemprop="datePublished">2015-10-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      ToughRADIUS V1.2.0.2 发布
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2016/06/23/ver2181/" class="archive-article-date">
+  <time datetime="2016-06-22T22:39:26.000Z" itemprop="datePublished">Jun 23</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/06/23/ver2181/">TOUGHRADIUS 抛弃 AGPL，采用 Apache 协议</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ToughRADIUS V1.2.0.2 发布。</p>
-<h2 id="版本变更说明：">版本变更说明：</h2><ul>
-<li>修复了系统创建后，用户密码认证失效，全部放行的bug。</li>
-<li>修复了无法使用mschapv2认证的错误，支持mppe128位加密。</li>
-<li>删除了mschapv1的支持。</li>
-</ul>
-<h2 id="升级指南">升级指南</h2><p>可在系统控制管理界面里直接升级稳定版，无数据库结构变动，但建议还是要备份数据。</p>
-<p>如果界面升级失败，可在主机终端用以下指令升级：</p>
-<pre><code>docker <span class="built_in">exec</span> trserver sh -c <span class="string">"cd /opt/toughradius &amp;&amp; git checkout stable &amp;&amp; git pull origin stable &amp;&amp; supervisorctl restart all"</span>
-</code></pre><blockquote>
-<p>注意 trserver是容器的名称，请该做你部署的容器名称。</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.toughradius.org/2015/10/17/ver1202/" data-id="ciprgs56x000h9iqjrk9ykj2v" class="article-share-link">Share</a>
-      
-        <a href="http://blog.toughradius.org/2015/10/17/ver1202/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/release/">release</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2015/10/19/linux-pptpd-to-toughradius/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Linux PPTP 对接 ToughRADIUS
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2015/10/17/mschapv2/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">mschapv2在Radius中的认证实现</div>
-    </a>
-  
-</nav>
-
-  
 </article>
-
-
-<section id="comments">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
+  
+  
+    </div></section>
+  
 </section>
         
           <aside id="sidebar">
@@ -252,13 +183,11 @@ docker exec trserve">
 <script>
   var disqus_shortname = 'toughradius';
   
-  var disqus_url = 'http://blog.toughradius.org/2015/10/17/ver1202/';
-  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>

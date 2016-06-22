@@ -4,7 +4,7 @@
   <subtitle><![CDATA[服务中小微ISP，让运营变的更简单]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.toughradius.org/"/>
-  <updated>2016-05-31T14:15:16.000Z</updated>
+  <updated>2016-06-22T22:41:10.000Z</updated>
   <id>http://blog.toughradius.org/</id>
   
   <author>
@@ -13,6 +13,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[TOUGHRADIUS 抛弃 AGPL，采用 Apache 协议]]></title>
+    <link href="http://blog.toughradius.org/2016/06/23/ver2181/"/>
+    <id>http://blog.toughradius.org/2016/06/23/ver2181/</id>
+    <published>2016-06-22T22:39:26.000Z</published>
+    <updated>2016-06-22T22:41:10.000Z</updated>
+    <content type="html"><![CDATA[<p>为了更好地适应未来的市场，自 V2.1.8.1版本起，TOUGHRADIUS 抛弃 AGPL 协议，采用 Apache License 2.0 协议。</p>
+<p>TOUGHRADIUS 一直没有合并第三方代码，在协议变更的问题上没有太大争议。本次的协议变更，主要是为了更好地发展这个项目，推进TOUGHRADIUS的商业发展。</p>
+<h3 id="关于_ToughRADIUS">关于 ToughRADIUS</h3><p>TOUGHRADIUS是一个开源的Radius服务软件，采用于Apache License 2.0 许可协议发布。</p>
+<p>TOUGHRADIUS支持标准RADIUS协议，提供完整的AAA实现。支持灵活的策略管理，支持各种主流接入设备并轻松扩展，具备丰富的计费策略支持。</p>
+<p>TOUGHRADIUS支持使用Oracle, MySQL, PostgreSQL, MSSQL等主流数据库存储用户数据，并支持数据缓存，极大的提高了性能。</p>
+<p>TOUGHRADIUS支持Windows，Linux，BSD跨平台部署，部署使用简单。</p>
+<p>TOUGHRADIUS提供了RADIUS核心服务引擎与Web管理控制台，以及可扩展的API。</p>
+<p>TOUGHRADIUS网站：<a href="http://www.toughradius.net" target="_blank" rel="external">http://www.toughradius.net</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>为了更好地适应未来的市场，自 V2.1.8.1版本起，TOUGHRADIUS 抛弃 AGPL 协议，采用 Apache License 2.0 协议。</p>
+<p>TOUGHRADIUS 一直没有合并第三方代码，在协议变更的问题上没有太大争议。本次的协议变更，主要是为了更]]>
+    </summary>
+    
+      <category term="License" scheme="http://blog.toughradius.org/tags/License/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[ToughRADIUS V2.1.7发布]]></title>
